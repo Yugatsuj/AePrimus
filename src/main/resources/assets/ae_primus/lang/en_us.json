@@ -1,0 +1,15 @@
+{
+  "creativetab_ae_primus_tab": "Primus",
+  "item.ae_primus.pyrosian_ash": "Pyrosian Ash",
+  "block.ae_primus.pyrosian_soot": "Pyrosian Soot",
+  "block.ae_primus.packed_pyrosian_soot": "Packed Pyrosian Soot",
+  "block.ae_primus.pyrosian_stone": "Pyrosian Stone",
+  "block.ae_primus.pyrosian_stone_iron_ore": "Pyrosian Iron Ore",
+  "block.ae_primus.pyrosian_stone_gold_ore": "Pyrosian Gold Ore",
+  "block.ae_primus.pyrosian_deepslate": "Pyrosian Deepslate",
+  "block.ae_primus.pyrosian_deepslate_iron_ore": "Pyrosian Deepslate Iron Ore",
+  "block.ae_primus.pyrosian_deepslate_gold_ore": "Pyrosian Deepslate Gold Ore",
+  "solar_system.ae_primus.pyrossystem": "Pyros System",
+  "planet.ae_primus.pyros": "Pyros",
+  "planet.ae_primus.pyros_orbit": "Pyros Orbit"
+}

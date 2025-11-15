@@ -1,0 +1,11 @@
+{
+  "dimension": "ae_primus:pyros",
+  "gravity": 14.2368,
+  "orbit": "ae_primus:pyros_orbit",
+  "oxygen": false,
+  "solar_power": 16,
+  "solar_system": "ae_primus:pyrossystem",
+  "temperature": 1000,
+  "tier": 4,
+  "additional_launch_dimensions": []
+}

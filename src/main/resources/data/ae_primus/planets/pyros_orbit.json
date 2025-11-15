@@ -1,0 +1,9 @@
+{
+  "dimension": "ae_primus:pyros_orbit",
+  "gravity": 0.0,
+  "oxygen": false,
+  "solar_power": 32,
+  "solar_system": "ae_primus:pyrossystem",
+  "temperature": 300,
+  "tier": 4
+}

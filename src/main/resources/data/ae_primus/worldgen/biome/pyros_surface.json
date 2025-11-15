@@ -1,0 +1,55 @@
+{
+    "carvers": {
+        "air": []
+    },
+    "creature_spawn_probability": 0,
+    "has_precipitation": false,
+    "temperature": 1000,
+    "downfall": 0,
+    "effects": {
+        "water_fog_color": 10485795,
+        "sky_color": 0,
+        "fog_color": 5111808,
+        "water_color": 5701665,
+        "particle": {
+            "options": {
+                "type": "large_smoke"
+            },
+            "probability": 0.005
+        }
+    },
+    "spawners": {
+        "monster":[
+              {
+                "type": "minecraft:magma_cube",
+                "maxCount": 3,
+                "minCount": 1,
+                "weight": 50
+              }
+              
+        ]
+    },
+    "features": [
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [
+    "ad_astra:mars_diamond_ore",
+    "ad_astra:mars_ice_shard_ore",
+    "ad_astra:mars_iron_ore",
+    "ad_astra:mars_ostrum_ore"
+  ],
+  [
+    "minecraft:large_dripstone",
+    "minecraft:dripstone_cluster",
+    "minecraft:pointed_dripstone"
+  ]
+],
+
+    "spawn_costs": {},
+    "temperature_modifier": "none"
+
+}
