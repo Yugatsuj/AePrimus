@@ -1,5 +1,5 @@
 {
-    "aquifers_enabled": true,
+    "aquifers_enabled": false,
     "default_block": {
       "Name": "ae_primus:pyrosian_stone"
     },
@@ -229,7 +229,7 @@
                         }
                       }
                     },
-                    "max": 64.0,
+                    "max": 64,
                     "min": -64.0
                   }
                 }
