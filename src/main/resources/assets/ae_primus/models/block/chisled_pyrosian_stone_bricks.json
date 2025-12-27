@@ -1,0 +1,6 @@
+{
+ "parent": "minecraft:block/cube_all",
+  "textures": {
+    "all": "ae_primus:block/chisled_pyrosian_stone_bricks"
+  }
+}
