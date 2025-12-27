@@ -38,6 +38,14 @@ public class ModBlocks {
             () -> new Block(BlockBehaviour.Properties.copy(Blocks.IRON_ORE).sound(SoundType.STONE)));
     public static final RegistryObject<Block> PYROSIAN_STONE_GOLD_ORE = registerBlock("pyrosian_stone_gold_ore",
             () -> new Block(BlockBehaviour.Properties.copy(Blocks.GOLD_ORE).sound(SoundType.STONE)));
+    public static final RegistryObject<Block> PYROSIAN_STONE_BRICKS = registerBlock("pyrosian_stone_bricks",
+            () -> new Block(BlockBehaviour.Properties.copy(Blocks.STONE_BRICKS).sound(SoundType.STONE)));
+    public static final RegistryObject<Block> CHISLED_PYROSIAN_STONE_BRICKS = registerBlock("chisled_pyrosian_stone_bricks",
+            () -> new Block(BlockBehaviour.Properties.copy(Blocks.ANCIENT_DEBRIS).sound(SoundType.STONE)));
+    public static final RegistryObject<Block> PYROSIAN_DEEPSLATE_BRICKS = registerBlock("pyrosian_deepslate_bricks",
+            () -> new Block(BlockBehaviour.Properties.copy(Blocks.DEEPSLATE_BRICKS).sound(SoundType.DEEPSLATE_BRICKS)));
+    public static final RegistryObject<Block> CHISLED_PYROSIAN_DEEPSLATE_BRICKS = registerBlock("chisled_pyrosian_deepslate_bricks",
+            () -> new Block(BlockBehaviour.Properties.copy(Blocks.DEEPSLATE_BRICKS).sound(SoundType.DEEPSLATE_BRICKS)));
 
 
     private static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> block){

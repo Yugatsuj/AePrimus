@@ -27,9 +27,15 @@ public class ModCreativeModTabs {
                         output.accept(ModBlocks.PYROSIAN_STONE.get());
                         output.accept(ModBlocks.PYROSIAN_STONE_IRON_ORE.get());
                         output.accept(ModBlocks.PYROSIAN_STONE_GOLD_ORE.get());
+                        output.accept(ModBlocks.PYROSIAN_STONE_BRICKS.get());
+                        output.accept(ModBlocks.CHISLED_PYROSIAN_STONE_BRICKS.get());
                         output.accept(ModBlocks.PYROSIAN_DEEPSLATE.get());
                         output.accept(ModBlocks.PYROSIAN_DEEPSLATE_IRON_ORE.get());
                         output.accept(ModBlocks.PYROSIAN_DEEPSLATE_GOLD_ORE.get());
+                        output.accept(ModBlocks.PYROSIAN_DEEPSLATE_BRICKS.get());
+                        output.accept(ModBlocks.CHISLED_PYROSIAN_DEEPSLATE_BRICKS.get());
+
+
                     })
                     .build());
 

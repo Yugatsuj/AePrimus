@@ -1,6 +1,7 @@
 package net.yugatsuj.aeprimus;
 
 import com.mojang.logging.LogUtils;
+import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
@@ -13,6 +14,8 @@ import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.yugatsuj.aeprimus.block.ModBlocks;
+import net.yugatsuj.aeprimus.entity.ModEntities;
+import net.yugatsuj.aeprimus.entity.client.crabdozerRenderer;
 import net.yugatsuj.aeprimus.item.ModCreativeModTabs;
 import net.yugatsuj.aeprimus.item.ModItems;
 import org.slf4j.Logger;
@@ -31,6 +34,7 @@ public class AePrimus
 
         ModItems.register(modEventBus);
         ModBlocks.register(modEventBus);
+        ModEntities.register(modEventBus);
 
         modEventBus.addListener(this::commonSetup);
 
@@ -60,7 +64,7 @@ public class AePrimus
     public static class ClientModEvents {
         @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent event) {
-
+            EntityRenderers.register(ModEntities.CRABDOZER.get(), crabdozerRenderer::new);
         }
     }
 }
