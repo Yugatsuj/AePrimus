@@ -5,7 +5,6 @@ package net.yugatsuj.aeprimus.entity.client;// Made with Blockbench 5.0.5
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
-import net.minecraft.client.model.EntityModel;
 import net.minecraft.client.model.HierarchicalModel;
 import net.minecraft.client.model.geom.ModelLayerLocation;
 import net.minecraft.client.model.geom.ModelPart;
@@ -14,7 +13,7 @@ import net.minecraft.client.model.geom.builders.*;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.Entity;
-import net.yugatsuj.aeprimus.entity.animations.ModAnimationDefinitions;
+import net.yugatsuj.aeprimus.entity.animations.CrabdozerAnimationDefinitions;
 import net.yugatsuj.aeprimus.entity.custom.crabdozerEntity;
 
 public class crabdozer<T extends Entity> extends HierarchicalModel<T> {
@@ -277,11 +276,11 @@ public class crabdozer<T extends Entity> extends HierarchicalModel<T> {
         this.root().getAllParts().forEach(ModelPart::resetPose);
         this.applyHeadRotation(netHeadYaw, headPitch, ageInTicks);
 
-        this.animateWalk(ModAnimationDefinitions.CRABDOZER_WALK, limbSwing, limbSwingAmount,2f,2.5f);
-        this.animate(((crabdozerEntity) entity).idleAnimationState, ModAnimationDefinitions.CRABDOZER_IDLE, ageInTicks, 1f);
-        this.animate(((crabdozerEntity) entity).attackAnimationState, ModAnimationDefinitions.CRABDOZER_ATTACK, ageInTicks, 1f);
-        this.animate(((crabdozerEntity) entity).sitAnimationState, ModAnimationDefinitions.CRABDOZER_SIT, ageInTicks, 1.0F);
-        this.animate(((crabdozerEntity) entity).getUpAnimationState, ModAnimationDefinitions.CRABDOZER_GET_UP, ageInTicks, 1.0F);
+        this.animateWalk(CrabdozerAnimationDefinitions.CRABDOZER_WALK, limbSwing, limbSwingAmount,2f,2.5f);
+        this.animate(((crabdozerEntity) entity).idleAnimationState, CrabdozerAnimationDefinitions.CRABDOZER_IDLE, ageInTicks, 1f);
+        this.animate(((crabdozerEntity) entity).attackAnimationState, CrabdozerAnimationDefinitions.CRABDOZER_ATTACK, ageInTicks, 1f);
+        this.animate(((crabdozerEntity) entity).sitAnimationState, CrabdozerAnimationDefinitions.CRABDOZER_SIT, ageInTicks, 1.0F);
+        this.animate(((crabdozerEntity) entity).getUpAnimationState, CrabdozerAnimationDefinitions.CRABDOZER_GET_UP, ageInTicks, 1.0F);
     }
 
 

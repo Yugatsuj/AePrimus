@@ -5,7 +5,7 @@ import net.minecraft.client.animation.AnimationDefinition;
 import net.minecraft.client.animation.Keyframe;
 import net.minecraft.client.animation.KeyframeAnimations;
 
-public class ModAnimationDefinitions {
+public class CrabdozerAnimationDefinitions {
     public static final AnimationDefinition CRABDOZER_IDLE = AnimationDefinition.Builder.withLength(2.0F).looping()
             .addAnimation("Body", new AnimationChannel(AnimationChannel.Targets.ROTATION,
                     new Keyframe(0.0F, KeyframeAnimations.degreeVec(0.0F, 0.0F, 0.0F), AnimationChannel.Interpolations.LINEAR),

@@ -4,6 +4,7 @@ import com.mojang.logging.LogUtils;
 import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
 import net.minecraftforge.event.server.ServerStartingEvent;
@@ -15,7 +16,7 @@ import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.yugatsuj.aeprimus.block.ModBlocks;
 import net.yugatsuj.aeprimus.entity.ModEntities;
-import net.yugatsuj.aeprimus.entity.client.crabdozerRenderer;
+import net.yugatsuj.aeprimus.entity.client.*;
 import net.yugatsuj.aeprimus.item.ModCreativeModTabs;
 import net.yugatsuj.aeprimus.item.ModItems;
 import org.slf4j.Logger;
@@ -64,7 +65,14 @@ public class AePrimus
     public static class ClientModEvents {
         @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent event) {
+            EntityRenderers.register(ModEntities.PYRONITE.get(), pyronite_v1Renderer::new);
             EntityRenderers.register(ModEntities.CRABDOZER.get(), crabdozerRenderer::new);
+        }
+
+        @SubscribeEvent
+        public static void registerLayer(EntityRenderersEvent.RegisterLayerDefinitions event) {
+            event.registerLayerDefinition(ModModelLayers.CRABDOZER_LAYER, crabdozer::createBodyLayer);
+            event.registerLayerDefinition(ModModelLayers.PYRONITEV1_LAYER, pyronite_v1::createBodyLayer);
         }
     }
 }

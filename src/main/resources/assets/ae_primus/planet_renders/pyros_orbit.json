@@ -3,13 +3,13 @@
   "custom_sky": true,
   "custom_weather": false,
   "dimension": "ae_primus:pyros",
-  "has_fog": true,
+  "has_fog": false,
   "has_thick_fog": false,
   "render_in_rain": true,
   "sky_renderables": [
     {
       "back_light_color": -39,
-      "back_light_scale": 27.0,
+      "back_light_scale": 30.0,
       "blend": false,
       "global_rotation": [
         0.0,
@@ -22,12 +22,30 @@
         0.0
       ],
       "movement_type": "TIME_OF_DAY",
-      "scale": 9.0,
+      "scale": 10.0,
       "texture": "ad_astra:textures/environment/sun.png"
     },
     {
       "back_light_color": -12813094,
-      "back_light_scale": 42.0,
+      "back_light_scale": 240.0,
+      "blend": false,
+      "global_rotation": [
+        180.0,
+        0.0,
+        0.0
+      ],
+      "local_rotation": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "movement_type": "STATIC",
+      "scale": 80.0,
+      "texture": "ae_primus:textures/space/pyros.png"
+    },
+    {
+      "back_light_color": -5261108,
+      "back_light_scale": 24.0,
       "blend": false,
       "global_rotation": [
         80.0,
@@ -40,8 +58,8 @@
         0.0
       ],
       "movement_type": "STATIC",
-      "scale": 14.0,
-      "texture": "ad_astra:textures/environment/earth.png"
+      "scale": 8.0,
+      "texture": "ad_astra:textures/environment/moon.png"
     }
   ],
   "star_brightness": 0.6,

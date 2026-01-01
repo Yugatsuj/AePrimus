@@ -21,6 +21,8 @@ public class ModCreativeModTabs {
                     .title(Component.translatable("creativetab_ae_primus_tab"))
                     .displayItems((itemDisplayParameters, output) -> {
                         output.accept(ModItems.PYROSIANASH.get());
+                        output.accept(ModItems.PYROSIANWAX.get());
+                        output.accept(ModItems.PYRONITEPEBBLES.get());
 
                         output.accept(ModBlocks.PYROSIAN_SOOT.get());
                         output.accept(ModBlocks.PACKED_PYROSIAN_SOOT.get());
@@ -35,6 +37,8 @@ public class ModCreativeModTabs {
                         output.accept(ModBlocks.PYROSIAN_DEEPSLATE_BRICKS.get());
                         output.accept(ModBlocks.CHISLED_PYROSIAN_DEEPSLATE_BRICKS.get());
 
+                        output.accept(ModItems.CRABDOZER_SPAWN_EGG.get());
+                        output.accept(ModItems.PYRONITE_SPAWN_EGG.get());
 
                     })
                     .build());

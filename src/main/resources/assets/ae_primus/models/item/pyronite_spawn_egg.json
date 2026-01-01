@@ -1,0 +1,7 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "ae_primus:item/pyronite_spawn_egg"
+  }
+
+}

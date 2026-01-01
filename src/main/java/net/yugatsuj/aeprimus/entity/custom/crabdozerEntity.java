@@ -1,4 +1,5 @@
 package net.yugatsuj.aeprimus.entity.custom;
+import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializer;
 import net.minecraft.network.syncher.EntityDataSerializers;
@@ -26,12 +27,18 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
+import net.minecraft.world.scores.Team;
+import net.yugatsuj.aeprimus.AePrimus;
 import net.yugatsuj.aeprimus.entity.ModEntities;
 import net.yugatsuj.aeprimus.entity.ai.CrabdozerAttackGoal;
+import net.yugatsuj.aeprimus.item.ModItems;
 import org.w3c.dom.Attr;
 import javax.annotation.Nullable;
 
 public class crabdozerEntity extends TamableAnimal {
+    private static final EntityDataAccessor<Boolean> SITTING =
+            SynchedEntityData.defineId(crabdozerEntity.class, EntityDataSerializers.BOOLEAN);
+
     private static final EntityDataAccessor<Boolean> ATTACKING =
             SynchedEntityData.defineId(crabdozerEntity.class, EntityDataSerializers.BOOLEAN);
 
@@ -116,6 +123,7 @@ public class crabdozerEntity extends TamableAnimal {
     protected void defineSynchedData() {
         super.defineSynchedData();
         this.entityData.define(ATTACKING, false);
+        this.entityData.define(SITTING, false);
     }
     @Override
     protected void registerGoals() {
@@ -123,7 +131,7 @@ public class crabdozerEntity extends TamableAnimal {
         this.goalSelector.addGoal(1, new CrabdozerAttackGoal(this, 1.0D, true));
         this.goalSelector.addGoal(2, new SitWhenOrderedToGoal(this));
         this.goalSelector.addGoal(3, new FollowOwnerGoal(this, 1.1D, 10.0F, 2.0F, false));
-        this.goalSelector.addGoal(4, new TemptGoal(this, 1.2D, Ingredient.of(Items.COOKED_BEEF), false));
+        this.goalSelector.addGoal(4, new TemptGoal(this, 1.2D, Ingredient.of(ModItems.PYRONITEPEBBLES.get()), false));
         this.goalSelector.addGoal(5, new WaterAvoidingRandomStrollGoal(this, 1.1D));
         this.goalSelector.addGoal(6, new LookAtPlayerGoal(this, Player.class, 10f));
         this.goalSelector.addGoal(7, new RandomLookAroundGoal(this));
@@ -131,9 +139,11 @@ public class crabdozerEntity extends TamableAnimal {
         this.targetSelector.addGoal(1, new OwnerHurtByTargetGoal(this));
         this.targetSelector.addGoal(2, new OwnerHurtTargetGoal(this));
         this.targetSelector.addGoal(3, new HurtByTargetGoal(this));
-        this.targetSelector.addGoal(4, new NearestAttackableTargetGoal<>(this, Player.class,true,
+        this.targetSelector.addGoal(4, new NearestAttackableTargetGoal<>(this, pyronite_v1Entity.class,true,
                 (target) -> !this.isTame()));
-        this.targetSelector.addGoal(5, new NearestAttackableTargetGoal<>(this, Monster.class, true,
+        this.targetSelector.addGoal(5, new NearestAttackableTargetGoal<>(this, Player.class,true,
+                (target) -> !this.isTame()));
+        this.targetSelector.addGoal(6, new NearestAttackableTargetGoal<>(this, Monster.class, true,
                 (target) -> this.isTame()));
     }
 
@@ -210,7 +220,7 @@ public class crabdozerEntity extends TamableAnimal {
                 this.setTarget(null);
                 return InteractionResult.sidedSuccess(this.level().isClientSide);
             }
-            if (itemstack.is(Items.COOKED_BEEF) && this.getHealth() < this.getMaxHealth()) {
+            if (itemstack.is(ModItems.PYRONITEPEBBLES.get()) && this.getHealth() < this.getMaxHealth()) {
                 if (!this.level().isClientSide) {
                     this.heal(10.0F);
                     this.playSound(SoundEvents.GENERIC_EAT, 1.0F, 1.0F);
@@ -221,13 +231,13 @@ public class crabdozerEntity extends TamableAnimal {
                 }
                 return InteractionResult.sidedSuccess(this.level().isClientSide);
             }
-            if (!this.isOrderedToSit() && !itemstack.is(Items.COOKED_BEEF)) {
+            if (!this.isOrderedToSit() && !itemstack.is(ModItems.PYRONITEPEBBLES.get())) {
                 if (!this.level().isClientSide) {
                     player.startRiding(this);
                 }
                 return InteractionResult.sidedSuccess(this.level().isClientSide);
             }
-        } else if (itemstack.is(Items.COOKED_BEEF)) {
+        } else if (itemstack.is(ModItems.PYRONITEPEBBLES.get())) {
             if (!this.level().isClientSide) {
                 if (this.random.nextInt(20) == 0) {
                     this.tame(player);
@@ -261,4 +271,35 @@ public class crabdozerEntity extends TamableAnimal {
     protected SoundEvent getDeathSound() {
         return SoundEvents.POLAR_BEAR_DEATH;
     }
+    @Override
+    public void readAdditionalSaveData(CompoundTag tag) {
+        super.readAdditionalSaveData(tag);
+        setSitting(tag.getBoolean("isSitting"));
+    }
+
+    @Override
+    public void addAdditionalSaveData(CompoundTag tag) {
+        super.addAdditionalSaveData(tag);
+        tag.putBoolean("isSitting", this.isSitting());
+    }
+
+
+    public void setSitting(boolean sitting) {
+        this.entityData.set(SITTING, sitting);
+        this.setOrderedToSit(sitting);
+    }
+
+    public boolean isSitting() {
+        return this.entityData.get(SITTING);
+    }
+
+    @Override
+    public Team getTeam() {
+        return super.getTeam();
+    }
+
+    public boolean canBeLeashed(Player player) {
+        return false;
+    }
+
 }
