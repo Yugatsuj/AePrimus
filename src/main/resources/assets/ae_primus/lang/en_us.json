@@ -22,6 +22,7 @@
   "block.ae_primus.pyrosian_deepslate_bricks": "Pyrosian Deepslate Bricks",
   "entity.ae_primus.crabdozer": "Crabdozer",
   "entity.ae_primus.pyronite": "Pyronite",
+  "entity.ae_primus.pyronite.none": "Pyronite",
   "entity.ae_primus.pyronite.armorer": "Pyronite Armorer ",
   "entity.ae_primus.pyronite.weaponsmith": "Pyronite Weaponsmith ",
   "entity.ae_primus.pyronite.cartographer": "Pyronite Cartographer ",

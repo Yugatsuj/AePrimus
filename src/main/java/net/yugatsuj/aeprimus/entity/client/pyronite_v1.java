@@ -8,8 +8,11 @@ import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.model.geom.PartPose;
 import net.minecraft.client.model.geom.builders.*;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.util.Mth;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.npc.VillagerData;
+import net.yugatsuj.aeprimus.entity.animations.PyroniteV1AnimationDefinitions;
+import net.yugatsuj.aeprimus.entity.custom.pyronite_v1Entity;
 
 public class pyronite_v1<T extends Entity> extends HierarchicalModel<T> {
     // This layer location should be baked with EntityRendererProvider.Context in the entity renderer and passed into this model's constructor
@@ -394,14 +397,31 @@ public class pyronite_v1<T extends Entity> extends HierarchicalModel<T> {
     }
 
     @Override
-    public void setupAnim(Entity entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
+    public void setupAnim(T entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
+        this.root().getAllParts().forEach(ModelPart::resetPose);
+        this.WholeHead.yRot = netHeadYaw * ((float)Math.PI / 180F);
+        this.WholeHead.xRot = headPitch * ((float)Math.PI / 180F);
 
+        this.animateWalk(PyroniteV1AnimationDefinitions.PYRONITE_WALK, limbSwing, limbSwingAmount, 2f, 1.25f);
+        this.animate(((pyronite_v1Entity) entity).idleAnimationState, PyroniteV1AnimationDefinitions.PYRONITE_IDLE, ageInTicks, 1f);
+
+        if(entity instanceof pyronite_v1Entity villager) {
+            if(villager.offerAnimationState.isStarted()) {
+                float progress = ageInTicks * 0.1F;
+                this.leftarm_upper.xRot = -0.75F + Mth.cos(progress) * 0.05F;
+                this.leftarm_upper.yRot = 0.2F;
+                this.rightarm_upper.xRot = -0.75F + Mth.cos(progress) * 0.05F;
+                this.rightarm_upper.yRot = -0.2F;
+            }
+        }
     }
 
     @Override
     public void renderToBuffer(PoseStack poseStack, VertexConsumer vertexConsumer, int packedLight, int packedOverlay, float red, float green, float blue, float alpha) {
         pyronite_v1.render(poseStack, vertexConsumer, packedLight, packedOverlay, red, green, blue, alpha);
     }
+
+
 
     @Override
     public ModelPart root() {

@@ -1,5 +1,5 @@
 {
-    "aquifers_enabled": false,
+    "aquifers_enabled": true,
     "default_block": {
       "Name": "ae_primus:pyrosian_stone"
     },
@@ -331,7 +331,7 @@
         }
       }
     },
-    "ore_veins_enabled": true,
+    "ore_veins_enabled": false,
     "sea_level": 70,
     "spawn_target": [
       {

@@ -26,23 +26,19 @@
                 "minCount": 1,
                 "weight": 50
               }
-              
+
         ]
     },
-    "features": [
-  [],
-  [],
-  [],
-  [],
-  [],
-  [],
-  [],
-  [
-    "minecraft:large_dripstone",
-    "minecraft:dripstone_cluster",
-    "minecraft:pointed_dripstone"
-  ]
-],
+  "features": [
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    []
+  ],
 
     "spawn_costs": {},
     "temperature_modifier": "none"

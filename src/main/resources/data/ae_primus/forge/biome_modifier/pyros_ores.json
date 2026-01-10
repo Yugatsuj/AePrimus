@@ -1,0 +1,11 @@
+{
+  "type": "forge:add_features",
+  "biomes": "ae_primus:pyros_surface",
+  "features": [
+    "ae_primus:pyrosian_stone_iron_ore",
+    "ae_primus:pyrosian_stone_gold_ore",
+    "ae_primus:pyrosian_deepslate_iron_ore",
+    "ae_primus:pyrosian_deepslate_gold_ore"
+  ],
+  "step": "underground_ores"
+}

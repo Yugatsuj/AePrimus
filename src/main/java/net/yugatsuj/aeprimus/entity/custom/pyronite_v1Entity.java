@@ -1,31 +1,117 @@
 package net.yugatsuj.aeprimus.entity.custom;
 
 import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
-import net.minecraft.client.model.geom.ModelLayerLocation;
+import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.syncher.EntityDataAccessor;
+import net.minecraft.network.syncher.EntityDataSerializers;
+import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.sounds.SoundEvent;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
+import net.minecraft.world.DifficultyInstance;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResult;
+import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.AvoidEntityGoal;
+import net.minecraft.world.entity.ai.gossip.GossipType;
 import net.minecraft.world.entity.animal.Animal;
 import net.minecraft.world.entity.npc.Villager;
 import net.minecraft.world.entity.npc.VillagerData;
+import net.minecraft.world.entity.npc.VillagerProfession;
 import net.minecraft.world.entity.npc.VillagerTrades;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.item.trading.MerchantOffer;
 import net.minecraft.world.item.trading.MerchantOffers;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.ServerLevelAccessor;
 import net.yugatsuj.aeprimus.entity.ModEntities;
-import net.yugatsuj.aeprimus.entity.custom.crabdozerEntity;
 import net.yugatsuj.aeprimus.entity.pyroniteMerchantOffers;
-import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
-
-// LEGACY ENTITY. WILL BE REPLACED IN THE FUTURE.
+import net.yugatsuj.aeprimus.item.ModItems;
+import org.jetbrains.annotations.Nullable;
+// If it works then it works and dont touch it
 public class pyronite_v1Entity extends Villager {
+    private static final EntityDataAccessor<Integer> VARIANT = SynchedEntityData.defineId(pyronite_v1Entity.class, EntityDataSerializers.INT);
 
+    public final AnimationState idleAnimationState = new AnimationState();
+    private int idleAnimationTimeout = 0;
+    public final AnimationState offerAnimationState = new AnimationState();
 
     public pyronite_v1Entity(EntityType<? extends Villager> entityType, Level level) {
         super(entityType, level);
     }
 
+    @Override
+    protected void defineSynchedData() {
+        super.defineSynchedData();
+        this.entityData.define(VARIANT, 0);
+    }
+
+    public int getPyroniteVariant() {
+        return this.entityData.get(VARIANT);
+    }
+
+    public void setPyroniteVariant(int variant) {
+        this.entityData.set(VARIANT, variant);
+    }
+
+    @Override
+    public void addAdditionalSaveData(CompoundTag tag) {
+        super.addAdditionalSaveData(tag);
+        tag.putInt("Variant", this.getPyroniteVariant());
+    }
+
+    @Override
+    public void readAdditionalSaveData(CompoundTag tag) {
+        super.readAdditionalSaveData(tag);
+        this.setPyroniteVariant(tag.getInt("Variant"));
+    }
+
+    @Override
+    public SpawnGroupData finalizeSpawn(ServerLevelAccessor level, DifficultyInstance difficulty,
+                                        MobSpawnType reason, @Nullable SpawnGroupData spawnData,
+                                        @Nullable CompoundTag dataTag) {
+        spawnData = super.finalizeSpawn(level, difficulty, reason, spawnData, dataTag);
+        this.setPyroniteVariant(this.random.nextInt(3));
+
+        // 10% chance for nitwit
+        if (this.random.nextFloat() < 0.1f) {
+            this.setVillagerData(this.getVillagerData().setProfession(VillagerProfession.NITWIT));
+        }
+
+        return spawnData;
+    }
+
+    @Override
+    public void tick() {
+        super.tick();
+        if(this.level().isClientSide()) {
+            setupAnimationStates();
+        }
+    }
+
+    private void setupAnimationStates() {
+        if (this.idleAnimationTimeout <= 0) {
+            this.idleAnimationTimeout = this.random.nextInt(40) + 80;
+            this.idleAnimationState.start(this.tickCount);
+        } else {
+            --this.idleAnimationTimeout;
+        }
+
+        boolean isShowingOffer = !this.getMainHandItem().isEmpty();
+
+        if (isShowingOffer) {
+            offerAnimationState.startIfStopped(this.tickCount);
+        } else {
+            offerAnimationState.stop();
+        }
+    }
 
     public static AttributeSupplier.Builder createAttributes() {
         return Animal.createLivingAttributes()
@@ -37,6 +123,42 @@ public class pyronite_v1Entity extends Villager {
                 .add(Attributes.ATTACK_DAMAGE, 8f);
     }
 
+     // Brush mechanic shit
+
+    @Override
+    public InteractionResult mobInteract(Player player, InteractionHand hand) {
+        ItemStack itemStack = player.getItemInHand(hand);
+
+        if (itemStack.getItem() == Items.BRUSH && !this.level().isClientSide) {
+            VillagerProfession profession = this.getVillagerData().getProfession();
+
+            if (profession.equals(VillagerProfession.NONE) || profession.equals(VillagerProfession.NITWIT)) {
+                return InteractionResult.PASS;
+            }
+
+            itemStack.hurtAndBreak(5, player, (p) -> p.broadcastBreakEvent(hand));
+
+            this.spawnAtLocation(ModItems.PYRONITEPEBBLES.get());
+
+            this.getGossips().add(player.getUUID(), GossipType.MINOR_NEGATIVE, 25);
+
+            ((ServerLevel) this.level()).sendParticles(
+                    ParticleTypes.ANGRY_VILLAGER,
+                    this.getX(),
+                    this.getY() + this.getBbHeight() + 0.5,
+                    this.getZ(),
+                    5,
+                    0.5, 0.5, 0.5,
+                    0.0
+            );
+
+            this.level().playSound(null, this.blockPosition(), SoundEvents.BRUSH_GENERIC, SoundSource.PLAYERS, 1.0F, 1.0F);
+
+            return InteractionResult.SUCCESS;
+        }
+
+        return super.mobInteract(player, hand);
+    }
     @Override
     protected void registerGoals() {
         super.registerGoals();
@@ -47,10 +169,14 @@ public class pyronite_v1Entity extends Villager {
     public Villager getBreedOffspring(ServerLevel serverWorld, AgeableMob passiveEntity) {
         pyronite_v1Entity entity = new pyronite_v1Entity((EntityType<? extends Villager>) ModEntities.PYRONITE.get(), serverWorld);
         entity.finalizeSpawn(serverWorld, serverWorld.getCurrentDifficultyAt(entity.blockPosition()), MobSpawnType.BREEDING, null, null);
+
+        if (passiveEntity instanceof pyronite_v1Entity otherParent) {
+            entity.setPyroniteVariant(this.random.nextBoolean() ? this.getPyroniteVariant() : otherParent.getPyroniteVariant());
+        }
+
         return entity;
     }
 
-    // Custom trade offers
     @Override
     protected void updateTrades() {
         VillagerData villagerData = this.getVillagerData();
@@ -64,5 +190,27 @@ public class pyronite_v1Entity extends Villager {
         }
         MerchantOffers tradeOfferList = this.getOffers();
         this.addOffersFromItemListings(tradeOfferList, factorys, 2);
+    }
+    @Nullable
+    @Override
+    protected SoundEvent getAmbientSound() {
+        return SoundEvents.BLAZE_AMBIENT;
+    }
+    @Nullable
+    @Override
+
+    protected SoundEvent getHurtSound(DamageSource damageSource) {
+        return SoundEvents.BLAZE_HURT;
+    }
+
+    @Nullable
+    @Override
+    protected SoundEvent getDeathSound() {
+        return SoundEvents.BLAZE_DEATH;
+    }
+
+    @Override
+    protected SoundEvent getTradeUpdatedSound(boolean isYesSound) {
+        return SoundEvents.BLAZE_AMBIENT;
     }
 }

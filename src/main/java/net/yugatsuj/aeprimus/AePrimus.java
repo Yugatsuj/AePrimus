@@ -22,12 +22,11 @@ import net.yugatsuj.aeprimus.item.ModItems;
 import org.slf4j.Logger;
 
 @Mod(AePrimus.MOD_ID)
-public class AePrimus
-{
+public class AePrimus {
     public static final String MOD_ID = "ae_primus";
     private static final Logger LOGGER = LogUtils.getLogger();
-    public AePrimus()
-    {
+
+    public AePrimus() {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
 
@@ -45,34 +44,34 @@ public class AePrimus
 
     }
 
-    private void commonSetup(final FMLCommonSetupEvent event)
-    {
+    private void commonSetup(final FMLCommonSetupEvent event) {
     }
 
-    // Add the example block item to the building blocks tab
     private void addCreative(BuildCreativeModeTabContentsEvent event) {
-     if(event.getTabKey() == CreativeModeTabs.INGREDIENTS) {
-       event.accept(ModItems.PYROSIANASH);
-     }
-    }
-
-    @SubscribeEvent
-    public void onServerStarting(ServerStartingEvent event) {
-
+        if (event.getTabKey() == CreativeModeTabs.INGREDIENTS) {
+            event.accept(ModItems.PYROSIANASH);
+        }
     }
 
     @Mod.EventBusSubscriber(modid = MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
     public static class ClientModEvents {
+
         @SubscribeEvent
-        public static void onClientSetup(FMLClientSetupEvent event) {
-            EntityRenderers.register(ModEntities.PYRONITE.get(), pyronite_v1Renderer::new);
-            EntityRenderers.register(ModEntities.CRABDOZER.get(), crabdozerRenderer::new);
+        public static void registerRenderers(EntityRenderersEvent.RegisterRenderers event) {
+            event.registerEntityRenderer(ModEntities.PYRONITE.get(), pyronite_v1Renderer::new);
+            event.registerEntityRenderer(ModEntities.CRABDOZER.get(), crabdozerRenderer::new);
         }
 
         @SubscribeEvent
         public static void registerLayer(EntityRenderersEvent.RegisterLayerDefinitions event) {
             event.registerLayerDefinition(ModModelLayers.CRABDOZER_LAYER, crabdozer::createBodyLayer);
             event.registerLayerDefinition(ModModelLayers.PYRONITEV1_LAYER, pyronite_v1::createBodyLayer);
+            event.registerLayerDefinition(ModModelLayers.PYRONITEV1_BABY_LAYER, pyronite_v1_baby::createBodyLayer);
+
+            event.registerLayerDefinition(ModModelLayers.PYRONITEV2_LAYER, pyronite_v2::createBodyLayer);
+            event.registerLayerDefinition(ModModelLayers.PYRONITEV2_BABY_LAYER, pyronite_v2_baby::createBodyLayer);
+            event.registerLayerDefinition(ModModelLayers.PYRONITEV3_LAYER, pyronite_v3::createBodyLayer);
+            event.registerLayerDefinition(ModModelLayers.PYRONITEV3_BABY_LAYER, pyronite_v3_baby::createBodyLayer);
         }
     }
 }
