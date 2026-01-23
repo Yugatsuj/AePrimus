@@ -2,15 +2,15 @@
   "type": "minecraft:ore",
   "config": {
     "discard_chance_on_air_exposure": 0.0,
-    "size": 8,
+    "size": 3,
     "targets": [
       {
         "state": {
-          "Name": "ae_primus:pyrosian_stone_gold_ore"
+          "Name": "ae_primus:pyrosian_deepslate_frigyd_ore"
         },
         "target": {
           "predicate_type": "minecraft:tag_match",
-          "tag": "ae_primus:pyrosian_stone_replaceables"
+          "tag": "ae_primus:pyrosian_deepslate_replaceables"
         }
       }
     ]

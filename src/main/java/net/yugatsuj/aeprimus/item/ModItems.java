@@ -19,6 +19,8 @@ public class ModItems {
             () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> PYRONITEPEBBLES = ITEMS.register("pyronite_pebbles",
             () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> FRIGYDSHARD = ITEMS.register("frigyd_shard",
+            () -> new Item(new Item.Properties()));
     public static final RegistryObject<ForgeSpawnEggItem> CRABDOZER_SPAWN_EGG = ITEMS.register("crabdozer_spawn_egg",
             () -> new ForgeSpawnEggItem(ModEntities.CRABDOZER, 0xFFFFFF, 0xFFFFFF , new Item.Properties()));
     public static final RegistryObject<ForgeSpawnEggItem> PYRONITE_SPAWN_EGG = ITEMS.register("pyronite_spawn_egg",

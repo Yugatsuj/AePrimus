@@ -23,17 +23,21 @@ public class ModCreativeModTabs {
                         output.accept(ModItems.PYROSIANASH.get());
                         output.accept(ModItems.PYROSIANWAX.get());
                         output.accept(ModItems.PYRONITEPEBBLES.get());
+                        output.accept(ModItems.FRIGYDSHARD.get());
 
                         output.accept(ModBlocks.PYROSIAN_SOOT.get());
                         output.accept(ModBlocks.PACKED_PYROSIAN_SOOT.get());
                         output.accept(ModBlocks.PYROSIAN_STONE.get());
                         output.accept(ModBlocks.PYROSIAN_STONE_IRON_ORE.get());
                         output.accept(ModBlocks.PYROSIAN_STONE_GOLD_ORE.get());
+                        output.accept(ModBlocks.PYROSIAN_STONE_DIAMOND_ORE.get());
                         output.accept(ModBlocks.PYROSIAN_STONE_BRICKS.get());
                         output.accept(ModBlocks.CHISLED_PYROSIAN_STONE_BRICKS.get());
                         output.accept(ModBlocks.PYROSIAN_DEEPSLATE.get());
                         output.accept(ModBlocks.PYROSIAN_DEEPSLATE_IRON_ORE.get());
                         output.accept(ModBlocks.PYROSIAN_DEEPSLATE_GOLD_ORE.get());
+                        output.accept(ModBlocks.PYROSIAN_DEEPSLATE_DIAMOND_ORE.get());
+                        output.accept(ModBlocks.PYROSIAN_DEEPSLATE_FRIGYD_ORE.get());
                         output.accept(ModBlocks.PYROSIAN_DEEPSLATE_BRICKS.get());
                         output.accept(ModBlocks.CHISLED_PYROSIAN_DEEPSLATE_BRICKS.get());
 

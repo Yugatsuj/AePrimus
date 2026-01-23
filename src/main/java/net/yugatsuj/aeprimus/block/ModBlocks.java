@@ -34,10 +34,16 @@ public class ModBlocks {
             () -> new Block(BlockBehaviour.Properties.copy(Blocks.DEEPSLATE_IRON_ORE).sound(SoundType.DEEPSLATE)));
     public static final RegistryObject<Block> PYROSIAN_DEEPSLATE_GOLD_ORE = registerBlock("pyrosian_deepslate_gold_ore",
             () -> new Block(BlockBehaviour.Properties.copy(Blocks.DEEPSLATE_GOLD_ORE).sound(SoundType.DEEPSLATE)));
+    public static final RegistryObject<Block> PYROSIAN_DEEPSLATE_FRIGYD_ORE = registerBlock("pyrosian_deepslate_frigyd_ore",
+            () -> new Block(BlockBehaviour.Properties.copy(Blocks.DEEPSLATE_DIAMOND_ORE).sound(SoundType.DEEPSLATE)));
+    public static final RegistryObject<Block> PYROSIAN_DEEPSLATE_DIAMOND_ORE = registerBlock("pyrosian_deepslate_diamond_ore",
+            () -> new Block(BlockBehaviour.Properties.copy(Blocks.DEEPSLATE_DIAMOND_ORE).sound(SoundType.DEEPSLATE)));
     public static final RegistryObject<Block> PYROSIAN_STONE_IRON_ORE = registerBlock("pyrosian_stone_iron_ore",
             () -> new Block(BlockBehaviour.Properties.copy(Blocks.IRON_ORE).sound(SoundType.STONE)));
     public static final RegistryObject<Block> PYROSIAN_STONE_GOLD_ORE = registerBlock("pyrosian_stone_gold_ore",
             () -> new Block(BlockBehaviour.Properties.copy(Blocks.GOLD_ORE).sound(SoundType.STONE)));
+    public static final RegistryObject<Block> PYROSIAN_STONE_DIAMOND_ORE = registerBlock("pyrosian_stone_diamond_ore",
+            () -> new Block(BlockBehaviour.Properties.copy(Blocks.DIAMOND_ORE).sound(SoundType.STONE)));
     public static final RegistryObject<Block> PYROSIAN_STONE_BRICKS = registerBlock("pyrosian_stone_bricks",
             () -> new Block(BlockBehaviour.Properties.copy(Blocks.STONE_BRICKS).sound(SoundType.STONE)));
     public static final RegistryObject<Block> CHISLED_PYROSIAN_STONE_BRICKS = registerBlock("chisled_pyrosian_stone_bricks",

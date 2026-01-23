@@ -5,10 +5,13 @@
     "ae_primus:chisled_pyrosian_stone_bricks",
     "ae_primus:pyrosian_stone_iron_ore",
     "ae_primus:pyrosian_stone_gold_ore",
+    "ae_primus:pyrosian_stone_diamond_ore",
     "ae_primus:pyrosian_deepslate",
     "ae_primus:pyrosian_deepslate_bricks",
     "ae_primus:chisled_pyrosian_deepslate_bricks",
     "ae_primus:pyrosian_deepslate_iron_ore",
-    "ae_primus:pyrosian_deepslate_gold_ore"
+    "ae_primus:pyrosian_deepslate_gold_ore",
+    "ae_primus:pyrosian_deepslate_diamond_ore",
+    "ae_primus:pyrosian_deepslate_frigyd_ore"
   ]
 }
