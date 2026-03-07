@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:stonecutting",
+  "group": "pyrosian_deepslate",
+  "ingredient": {
+    "item": "ae_primus:pyrosian_deepslate"
+  },
+  "result": "ae_primus:pyrosian_deepslate_cobblestone",
+  "count": 1
+}

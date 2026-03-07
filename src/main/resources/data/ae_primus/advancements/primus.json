@@ -1,0 +1,29 @@
+{
+  "criteria": {
+    "entered_pyros": {
+      "trigger": "minecraft:tick"
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+      "background": "ae_primus:textures/block/packed_pyrosian_soot.png",
+    "description": {
+      "translate": "advancements.ae_primus.primus.description"
+    },
+    "icon": {
+      "item": "ae_primus:pyrosian_ash"
+    },
+    "title": {
+      "translate": "advancements.ae_primus.primus.title"
+    }
+  },
+  "requirements": [
+    [
+      "entered_pyros"
+    ]
+  ],
+  "rewards": {
+    "experience": 0
+  },
+  "sends_telemetry_event": true
+}

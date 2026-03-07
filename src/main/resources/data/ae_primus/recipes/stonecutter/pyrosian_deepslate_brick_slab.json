@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:stonecutting",
+  "group": "pyrosian_stone",
+  "ingredient": {
+    "item": "ae_primus:pyrosian_deepslate_bricks"
+  },
+  "result": "ae_primus:pyrosian_deepslate_bricks_slab",
+  "count": 2
+}

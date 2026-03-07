@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "ae_primus:block/pyrosian_deepslate_slab"
+    },
+    "type=double": {
+      "model": "ae_primus:block/pyrosian_deepslate"
+    },
+    "type=top": {
+      "model": "ae_primus:block/pyrosian_deepslate_slab_top"
+    }
+  }
+}

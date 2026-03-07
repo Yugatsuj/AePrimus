@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "#": {
+      "item": "ae_primus:pyrosian_deepslate"
+    }
+  },
+  "pattern": [
+    "##",
+    "##"
+  ],
+  "result": {
+    "item": "ae_primus:pyrosian_deepslate_bricks",
+    "count": 4
+  },
+
+  "show_notification": true
+}

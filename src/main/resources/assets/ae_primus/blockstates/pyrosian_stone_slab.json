@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "ae_primus:block/pyrosian_stone_slab"
+    },
+    "type=double": {
+      "model": "ae_primus:block/pyrosian_stone"
+    },
+    "type=top": {
+      "model": "ae_primus:block/pyrosian_stone_slab_top"
+    }
+  }
+}

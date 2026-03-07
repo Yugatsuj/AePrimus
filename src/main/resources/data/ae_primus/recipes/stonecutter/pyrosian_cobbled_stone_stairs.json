@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:stonecutting",
+  "group": "pyrosian_stone",
+  "ingredient": {
+    "item": "ae_primus:pyrosian_cobblestone"
+  },
+  "result": "ae_primus:pyrosian_cobblestone_stairs",
+  "count": 1
+}

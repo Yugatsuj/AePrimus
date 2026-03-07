@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smelting",
+  "ingredient": {
+    "item": "ae_primus:pyrosian_cobblestone"
+  },
+  "result": "ae_primus:pyrosian_stone",
+  "experience": 0.1,
+  "cookingtime": 200
+}

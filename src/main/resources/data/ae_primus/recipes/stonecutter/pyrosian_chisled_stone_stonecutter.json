@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:stonecutting",
+  "group": "pyrosian_stone",
+  "ingredient": {
+    "item": "ae_primus:pyrosian_stone"
+  },
+  "result": "ae_primus:chisled_pyrosian_stone_bricks",
+  "count": 1
+}

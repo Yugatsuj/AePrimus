@@ -1,0 +1,13 @@
+{
+  "name":"ae_primus:pyros/volcanoes/pyros_volcano_big",
+  "fallback":"minecraft:empty",
+  "elements":[{
+    "weight":1,
+    "element":{
+      "location":"ae_primus:pyros/volcanoes/pyros_volcano_big",
+      "processors":"minecraft:empty",
+      "projection":"rigid",
+      "element_type":"minecraft:single_pool_element"
+    }
+  }]
+}

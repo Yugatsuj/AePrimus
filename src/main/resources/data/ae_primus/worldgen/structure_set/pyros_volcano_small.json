@@ -1,0 +1,15 @@
+{
+  "structures": [
+    {
+      "structure": "ae_primus:pyros_volcano_small",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "salt": 1460175004,
+    "spacing": 12,
+    "separation": 0,
+    "type": "minecraft:random_spread",
+    "spread_type": "triangular"
+  }
+}

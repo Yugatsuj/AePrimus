@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/template_wall_side",
+  "textures": {
+    "wall": "ae_primus:block/pyrosian_deepslate_bricks"
+  }
+}

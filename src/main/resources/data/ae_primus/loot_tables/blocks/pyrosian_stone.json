@@ -33,7 +33,7 @@
                   "condition": "minecraft:survives_explosion"
                 }
               ],
-              "name": "ae_primus:pyrosian_stone"
+              "name": "ae_primus:pyrosian_cobblestone"
             }
           ]
         }
@@ -41,5 +41,5 @@
       "rolls": 1.0
     }
   ],
-  "random_sequence": "ae_primus:blocks/pyrosian_stone"
+  "random_sequence": "ae_primus:blocks/pyrosian_cobblestone"
 }

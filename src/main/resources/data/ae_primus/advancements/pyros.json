@@ -1,0 +1,32 @@
+{
+  "parent": "ae_primus:primus",
+  "criteria": {
+    "entered_pyros": {
+      "conditions": {
+        "to": "ae_primus:pyros"
+      },
+      "trigger": "minecraft:changed_dimension"
+    }
+  },
+  "display": {
+      "background": "ae_primus:textures/block/packed_pyrosian_soot.png",
+    "description": {
+      "translate": "advancements.ae_primus.pyros.description"
+    },
+    "icon": {
+      "item": "ae_primus:pyrosian_stone"
+    },
+    "title": {
+      "translate": "advancements.ae_primus.pyros.title"
+    }
+  },
+  "requirements": [
+    [
+      "entered_pyros"
+    ]
+  ],
+  "rewards": {
+    "experience": 100
+  },
+  "sends_telemetry_event": true
+}

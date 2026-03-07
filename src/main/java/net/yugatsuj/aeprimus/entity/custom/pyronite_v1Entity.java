@@ -96,6 +96,7 @@ public class pyronite_v1Entity extends Villager {
         }
     }
 
+// Animation shit that i still dont get how works
     private void setupAnimationStates() {
         if (this.idleAnimationTimeout <= 0) {
             this.idleAnimationTimeout = this.random.nextInt(40) + 80;

@@ -9,6 +9,12 @@
       }
     },
     {
+      "count": 64,
+      "ingredient": {
+        "tag": "ae_primus:frigyd_shards"
+      }
+    },
+    {
       "count": 32,
       "ingredient": {
         "tag": "ad_astra:steel_plates"
@@ -29,7 +35,7 @@
     {
       "count": 32,
       "ingredient": {
-        "tag": "ae_primus:pyrosian_wax"
+        "tag": "ae_primus:pyrosian_waxs"
       }
     }
   ],

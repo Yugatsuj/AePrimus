@@ -1,0 +1,31 @@
+{
+  "parent": "ae_primus:pyros",
+  "criteria": {
+    "entered_pyros_orbit": {
+      "conditions": {
+        "to": "ae_primus:pyros_orbit"
+      },
+      "trigger": "minecraft:changed_dimension"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.ae_primus.pyros_orbit.description"
+    },
+    "icon": {
+      "item": "ae_primus:pyrosian_wax"
+    },
+    "title": {
+      "translate": "advancements.ae_primus.pyros_orbit.title"
+    }
+  },
+  "requirements": [
+    [
+      "entered_pyros_orbit"
+    ]
+  ],
+  "rewards": {
+    "experience": 200
+  },
+  "sends_telemetry_event": true
+}
