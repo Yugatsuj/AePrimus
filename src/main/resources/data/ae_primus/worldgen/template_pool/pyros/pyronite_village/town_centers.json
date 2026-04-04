@@ -1,0 +1,13 @@
+{
+  "name": "ae_primus:pyros/pyronite_village/town_centers",
+  "fallback": "minecraft:empty",
+  "elements": [{
+    "weight": 1,
+    "element": {
+      "location": "ae_primus:pyros/pyronite_village/town_centers/cauldron",
+      "processors": "minecraft:empty",
+      "projection": "rigid",
+      "element_type": "minecraft:single_pool_element"
+    }
+  }]
+}

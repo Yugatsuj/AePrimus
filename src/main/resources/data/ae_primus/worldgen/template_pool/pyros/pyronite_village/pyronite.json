@@ -1,0 +1,15 @@
+{
+  "name": "ae_primus:pyros/pyronite_village/pyronite",
+  "fallback": "minecraft:empty",
+  "elements": [
+    {
+      "weight": 1,
+      "element": {
+        "location": "ae_primus:pyros/pyronite_village/entities/pyronite/pyronite",
+        "processors": "minecraft:empty",
+        "projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    }
+  ]
+}

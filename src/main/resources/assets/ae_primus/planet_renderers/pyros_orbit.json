@@ -24,6 +24,24 @@
       "movement_type": "STATIC",
       "scale": 80.0,
       "texture": "ae_primus:textures/space/stars/pyros.png"
+    },
+    {
+      "back_light_color": -12813094,
+      "back_light_scale": 42.0,
+      "blend": false,
+      "global_rotation": [
+        -15.0,
+        0.0,
+        100.0
+      ],
+      "local_rotation": [
+        0.0,
+        100.0,
+        0.0
+      ],
+      "movement_type": "STATIC",
+      "scale": 8.0,
+      "texture": "ae_primus:textures/space/planets/crabdozer_ball.png"
     }
   ],
   "star_brightness": 0.6,

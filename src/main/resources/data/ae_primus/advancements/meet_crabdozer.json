@@ -1,7 +1,16 @@
 {
+  "display": {
+    "icon": {
+      "item": "ae_primus:crabdozer_spawn_egg"
+    },
+    "title": "Rock Lobster",
+    "description": "Find a wild Crabdozer",
+    "announce_to_chat": true,
+    "hidden": false
+  },
   "parent": "ae_primus:pyros",
   "criteria": {
-    "meet_crabdozer":{
+    "meet_crabdozer": {
       "trigger": "minecraft:entity_hurt_player",
       "conditions": {
         "damage": {
@@ -12,24 +21,5 @@
       }
     }
   },
-  "display": {
-    "description": {
-      "translate": "advancements.ae_primus.meet_crabdozer.description"
-    },
-    "icon": {
-      "item": "ae_primus:crabdozer_spawn_egg"
-    },
-    "title": {
-      "translate": "advancements.ae_primus.meet_crabdozer.title"
-    }
-  },
-  "requirements": [
-    [
-      "meet_crabdozer"
-    ]
-  ],
-  "rewards": {
-    "experience": 100
-  },
-  "sends_telemetry_event": true
+  "requirements": []
 }

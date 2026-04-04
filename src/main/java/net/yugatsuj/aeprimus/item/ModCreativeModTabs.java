@@ -12,6 +12,8 @@ import net.minecraftforge.registries.RegistryObject;
 import net.yugatsuj.aeprimus.AePrimus;
 import net.yugatsuj.aeprimus.block.ModBlocks;
 
+
+
 public class ModCreativeModTabs {
     public static final DeferredRegister<CreativeModeTab> CREATIVE_MODE_TABS =
             DeferredRegister.create(Registries.CREATIVE_MODE_TAB, AePrimus.MOD_ID);
@@ -59,6 +61,7 @@ public class ModCreativeModTabs {
                         output.accept(ModBlocks.PYROSIAN_DEEPSLATE_GOLD_ORE.get());
                         output.accept(ModBlocks.PYROSIAN_DEEPSLATE_DIAMOND_ORE.get());
                         output.accept(ModBlocks.PYROSIAN_DEEPSLATE_FRIGYD_ORE.get());
+
 
                         output.accept(ModItems.CRABDOZER_SPAWN_EGG.get());
                         output.accept(ModItems.PYRONITE_SPAWN_EGG.get());

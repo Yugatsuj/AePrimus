@@ -10,6 +10,7 @@ import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.damagesource.DamageTypes;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
@@ -23,7 +24,6 @@ import net.minecraft.world.entity.animal.Animal;
 import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
@@ -34,6 +34,9 @@ import net.yugatsuj.aeprimus.entity.ai.CrabdozerAttackGoal;
 import net.yugatsuj.aeprimus.item.ModItems;
 import org.w3c.dom.Attr;
 import javax.annotation.Nullable;
+
+// Hey if you are reading this that means the mod is official released and no i have yet to know how to code properly
+// All of this code is a mix of dog/horse propierties with camel animation recommended by Kaupenjoe
 
 public class crabdozerEntity extends TamableAnimal {
     private static final EntityDataAccessor<Boolean> SITTING =
@@ -50,6 +53,7 @@ public class crabdozerEntity extends TamableAnimal {
 
     }
 
+// animation states and timeout
     public final AnimationState idleAnimationState = new AnimationState();
     private int idleAnimationTimeout = 0;
     public final AnimationState attackAnimationState = new AnimationState();
@@ -99,6 +103,7 @@ public class crabdozerEntity extends TamableAnimal {
         }
     }
 
+    // walk animation bs
     @Override
     protected void updateWalkAnimation(float pPartialTick) {
         float f;
@@ -125,6 +130,8 @@ public class crabdozerEntity extends TamableAnimal {
         this.entityData.define(ATTACKING, false);
         this.entityData.define(SITTING, false);
     }
+
+    // Goals that he will follow
     @Override
     protected void registerGoals() {
         this.goalSelector.addGoal(0, new FloatGoal(this));
@@ -146,10 +153,10 @@ public class crabdozerEntity extends TamableAnimal {
         this.targetSelector.addGoal(6, new NearestAttackableTargetGoal<>(this, Monster.class, true,
                 (target) -> this.isTame()));
     }
-
+// Attrubutes for his hp movement other bs
     public static AttributeSupplier.Builder createAttributes() {
         return Animal.createLivingAttributes()
-                .add(Attributes.MAX_HEALTH, 80D)
+                .add(Attributes.MAX_HEALTH, 150D)
                 .add(Attributes.FOLLOW_RANGE, 12D)
                 .add(Attributes.MOVEMENT_SPEED, 0.4D)
                 .add(Attributes.ARMOR_TOUGHNESS, 0.5f)
@@ -162,7 +169,7 @@ public class crabdozerEntity extends TamableAnimal {
     public AgeableMob getBreedOffspring(ServerLevel plevel, AgeableMob ageableMob) {
         return ModEntities.CRABDOZER.get().create(plevel);
     }
-
+// the position of the player when he is riding that monsta
     @Override
     protected void positionRider(Entity pPassenger, Entity.MoveFunction pCallback) {
         super.positionRider(pPassenger, pCallback);
@@ -209,19 +216,27 @@ public class crabdozerEntity extends TamableAnimal {
             }
         }
     }
+
+  // unique interactions that he has
     @Override
     public InteractionResult mobInteract(Player player, InteractionHand hand) {
         ItemStack itemstack = player.getItemInHand(hand);
         if (this.isTame()) {
+            if (!this.level().isClientSide) {
+                // setting max health if tamed or not
+                this.getAttribute(Attributes.MAX_HEALTH).setBaseValue(80.0F);
+            }
+            //sitting function
             if (player.isShiftKeyDown() && itemstack.isEmpty()) {
                 boolean sitting = !this.isOrderedToSit();
                 this.setOrderedToSit(sitting);
                 this.navigation.stop();
                 this.setTarget(null);
-                return InteractionResult.sidedSuccess(this.level().isClientSide);
+                return InteractionResult.SUCCESS;
             }
             if (itemstack.is(ModItems.PYRONITEPEBBLES.get()) && this.getHealth() < this.getMaxHealth()) {
                 if (!this.level().isClientSide) {
+                    // Healing and particles bs
                     this.heal(10.0F);
                     this.playSound(SoundEvents.GENERIC_EAT, 1.0F, 1.0F);
                     this.level().broadcastEntityEvent(this, (byte)7);
@@ -237,10 +252,13 @@ public class crabdozerEntity extends TamableAnimal {
                 }
                 return InteractionResult.sidedSuccess(this.level().isClientSide);
             }
+            // what he eats
         } else if (itemstack.is(ModItems.PYRONITEPEBBLES.get())) {
             if (!this.level().isClientSide) {
                 if (this.random.nextInt(20) == 0) {
                     this.tame(player);
+                    this.getAttribute(Attributes.MAX_HEALTH).setBaseValue(80.0F);
+                    this.setHealth(80.0F);
                     this.level().broadcastEntityEvent(this, (byte)7);
                 } else {
                     this.level().broadcastEntityEvent(this, (byte)6);
@@ -254,6 +272,7 @@ public class crabdozerEntity extends TamableAnimal {
         }
         return super.mobInteract(player, hand);
     }
+    // Sounds that i made from minecraft mobs
     @Nullable
     @Override
     protected SoundEvent getAmbientSound() {
@@ -283,7 +302,6 @@ public class crabdozerEntity extends TamableAnimal {
         tag.putBoolean("isSitting", this.isSitting());
     }
 
-
     public void setSitting(boolean sitting) {
         this.entityData.set(SITTING, sitting);
         this.setOrderedToSit(sitting);
@@ -294,12 +312,22 @@ public class crabdozerEntity extends TamableAnimal {
     }
 
     @Override
+    public boolean fireImmune() {
+        return true;
+    }
+
+    @Override
     public Team getTeam() {
         return super.getTeam();
     }
 
     public boolean canBeLeashed(Player player) {
-        return false;
+        return true;
     }
 
+    @Override
+    public boolean isInvulnerableTo(DamageSource damageSource) {
+        // Returns true if the damage is fall damage, making it immune
+        return damageSource.is(DamageTypes.FALL) || super.isInvulnerableTo(damageSource);
+    }
 }

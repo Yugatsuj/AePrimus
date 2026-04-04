@@ -35,7 +35,8 @@ import net.yugatsuj.aeprimus.entity.ModEntities;
 import net.yugatsuj.aeprimus.entity.pyroniteMerchantOffers;
 import net.yugatsuj.aeprimus.item.ModItems;
 import org.jetbrains.annotations.Nullable;
-// If it works then it works and dont touch it
+// Honestly Probably my most hated work since its the hardest entity ive ever done so dont be surprised if you find swearing in comments
+// Most of this code is taken from Ad Astra custom villager and how they did that but i added the variant thing
 public class pyronite_v1Entity extends Villager {
     private static final EntityDataAccessor<Integer> VARIANT = SynchedEntityData.defineId(pyronite_v1Entity.class, EntityDataSerializers.INT);
 
@@ -47,6 +48,7 @@ public class pyronite_v1Entity extends Villager {
         super(entityType, level);
     }
 
+    // All the shit below is the variation code
     @Override
     protected void defineSynchedData() {
         super.defineSynchedData();
@@ -72,7 +74,7 @@ public class pyronite_v1Entity extends Villager {
         super.readAdditionalSaveData(tag);
         this.setPyroniteVariant(tag.getInt("Variant"));
     }
-
+    // Randomize what is the variation
     @Override
     public SpawnGroupData finalizeSpawn(ServerLevelAccessor level, DifficultyInstance difficulty,
                                         MobSpawnType reason, @Nullable SpawnGroupData spawnData,
@@ -96,7 +98,7 @@ public class pyronite_v1Entity extends Villager {
         }
     }
 
-// Animation shit that i still dont get how works
+// Animation shit that i hate
     private void setupAnimationStates() {
         if (this.idleAnimationTimeout <= 0) {
             this.idleAnimationTimeout = this.random.nextInt(40) + 80;
@@ -113,10 +115,10 @@ public class pyronite_v1Entity extends Villager {
             offerAnimationState.stop();
         }
     }
-
+    // Their attributes
     public static AttributeSupplier.Builder createAttributes() {
         return Animal.createLivingAttributes()
-                .add(Attributes.MAX_HEALTH, 80D)
+                .add(Attributes.MAX_HEALTH, 40D)
                 .add(Attributes.FOLLOW_RANGE, 12D)
                 .add(Attributes.MOVEMENT_SPEED, 0.4D)
                 .add(Attributes.ARMOR_TOUGHNESS, 0.5f)
@@ -132,7 +134,7 @@ public class pyronite_v1Entity extends Villager {
 
         if (itemStack.getItem() == Items.BRUSH && !this.level().isClientSide) {
             VillagerProfession profession = this.getVillagerData().getProfession();
-
+            // Only pyronites with jobs will drop flakes
             if (profession.equals(VillagerProfession.NONE) || profession.equals(VillagerProfession.NITWIT)) {
                 return InteractionResult.PASS;
             }
@@ -142,7 +144,7 @@ public class pyronite_v1Entity extends Villager {
             this.spawnAtLocation(ModItems.PYRONITEPEBBLES.get());
 
             this.getGossips().add(player.getUUID(), GossipType.MINOR_NEGATIVE, 25);
-
+            // Fucking particles
             ((ServerLevel) this.level()).sendParticles(
                     ParticleTypes.ANGRY_VILLAGER,
                     this.getX(),
@@ -152,7 +154,7 @@ public class pyronite_v1Entity extends Villager {
                     0.5, 0.5, 0.5,
                     0.0
             );
-
+            // Brushing sound
             this.level().playSound(null, this.blockPosition(), SoundEvents.BRUSH_GENERIC, SoundSource.PLAYERS, 1.0F, 1.0F);
 
             return InteractionResult.SUCCESS;
@@ -160,12 +162,14 @@ public class pyronite_v1Entity extends Villager {
 
         return super.mobInteract(player, hand);
     }
+    //Their primary goals
     @Override
     protected void registerGoals() {
         super.registerGoals();
         this.goalSelector.addGoal(1, new AvoidEntityGoal<>(this, crabdozerEntity.class, 15.0f, 0.5f, 0.5f));
     }
 
+    //Pyronite breeding and the variation bs
     @Override
     public Villager getBreedOffspring(ServerLevel serverWorld, AgeableMob passiveEntity) {
         pyronite_v1Entity entity = new pyronite_v1Entity((EntityType<? extends Villager>) ModEntities.PYRONITE.get(), serverWorld);
@@ -192,6 +196,9 @@ public class pyronite_v1Entity extends Villager {
         MerchantOffers tradeOfferList = this.getOffers();
         this.addOffersFromItemListings(tradeOfferList, factorys, 2);
     }
+
+    // Sounds bullshit that dont fit the mob but i didint found any better ones
+
     @Nullable
     @Override
     protected SoundEvent getAmbientSound() {
@@ -214,4 +221,10 @@ public class pyronite_v1Entity extends Villager {
     protected SoundEvent getTradeUpdatedSound(boolean isYesSound) {
         return SoundEvents.BLAZE_AMBIENT;
     }
+
+    @Override
+    public boolean fireImmune() {
+        return true;
+    }
+
 }

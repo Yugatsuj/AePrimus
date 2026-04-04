@@ -1,0 +1,15 @@
+{
+  "structures": [
+    {
+      "structure": "ae_primus:pyronite_village",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "type": "minecraft:random_spread",
+    "spacing": 68,
+    "separation": 16,
+    "spread_type": "triangular",
+    "salt": 19011220
+  }
+}

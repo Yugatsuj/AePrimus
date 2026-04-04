@@ -20,7 +20,7 @@ import net.yugatsuj.aeprimus.AePrimus;
 import net.yugatsuj.aeprimus.item.ModItems;
 
 import java.util.Random;
-
+// Pyrosian wax system
 @Mod.EventBusSubscriber(modid = AePrimus.MOD_ID, bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class PyrosianWaxEvents {
 

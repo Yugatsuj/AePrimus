@@ -17,7 +17,6 @@ import net.yugatsuj.aeprimus.entity.animations.CrabdozerAnimationDefinitions;
 import net.yugatsuj.aeprimus.entity.custom.crabdozerEntity;
 
 public class crabdozer<T extends Entity> extends HierarchicalModel<T> {
-    // This layer location should be baked with EntityRendererProvider.Context in the entity renderer and passed into this model's constructor
     public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(new ResourceLocation("modid", "crabdozer"), "main");
     private final ModelPart crabdozer;
     private final ModelPart RightLegs;

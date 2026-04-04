@@ -25,6 +25,12 @@
         "type": "minecraft:magma_cube",
         "maxCount": 3,
         "minCount": 1,
+        "weight": 200
+      },
+      {
+        "type": "ae_primus:crabdozer",
+        "maxCount": 1,
+        "minCount": 1,
         "weight": 1
       }
     ]
@@ -41,7 +47,11 @@
   "spawn_costs": {
     "minecraft:magma_cube": {
       "energy_budget": 0.05,
-      "charge": 0.5
+      "charge": 0.1
+    },
+    "ae_primus:crabdozer": {
+      "energy_budget": 0.0005,
+      "charge": 1.0
     }
   }
 }

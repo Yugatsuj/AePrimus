@@ -6,7 +6,7 @@ import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.PathfinderMob;
 import net.minecraft.world.entity.ai.goal.MeleeAttackGoal;
 import net.yugatsuj.aeprimus.entity.custom.crabdozerEntity;
-
+// Crabdozer attack AI stuff
 public class CrabdozerAttackGoal extends MeleeAttackGoal {
     private final crabdozerEntity entity;
     private int attackDelay = 10;

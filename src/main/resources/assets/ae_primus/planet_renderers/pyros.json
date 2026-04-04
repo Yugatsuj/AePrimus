@@ -4,9 +4,29 @@
   "custom_weather": false,
   "dimension": "ae_primus:pyros",
   "has_fog": true,
+  "fog_color": 4456448,
+  "sky_color": 1052672,
   "has_thick_fog": false,
   "render_in_rain": true,
   "sky_renderables": [
+    {
+      "back_light_color": -12813094,
+      "back_light_scale": 42.0,
+      "blend": false,
+      "global_rotation": [
+        -15.0,
+        0.0,
+        140.0
+      ],
+      "local_rotation": [
+        0.0,
+        100.0,
+        0.0
+      ],
+      "movement_type": "TIME_OF_DAY",
+      "scale": 6.0,
+      "texture": "ae_primus:textures/space/planets/crabdozer_ball.png"
+    }
     ],
   "star_brightness": 0.6,
   "star_colors": [

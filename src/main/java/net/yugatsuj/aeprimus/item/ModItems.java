@@ -1,13 +1,19 @@
 package net.yugatsuj.aeprimus.item;
 
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Rarity;
 import net.minecraftforge.common.ForgeSpawnEggItem;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import net.yugatsuj.aeprimus.AePrimus;
+import net.yugatsuj.aeprimus.block.ModBlocks;
 import net.yugatsuj.aeprimus.entity.ModEntities;
+
+
+
 
 public class ModItems {
     public static final DeferredRegister<Item> ITEMS =
@@ -25,8 +31,6 @@ public class ModItems {
             () -> new ForgeSpawnEggItem(ModEntities.CRABDOZER, 0xFFFFFF, 0xFFFFFF , new Item.Properties()));
     public static final RegistryObject<ForgeSpawnEggItem> PYRONITE_SPAWN_EGG = ITEMS.register("pyronite_spawn_egg",
             () -> new ForgeSpawnEggItem(ModEntities.PYRONITE, 0xFFFFFF, 0xFFFFFF , new Item.Properties()));
-
-
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);
     }

@@ -8,7 +8,7 @@ import net.yugatsuj.aeprimus.AePrimus;
 import net.yugatsuj.aeprimus.entity.ModEntities;
 import net.yugatsuj.aeprimus.entity.custom.crabdozerEntity;
 import net.yugatsuj.aeprimus.entity.custom.pyronite_v1Entity;
-
+// Kaupenjoe tutorial stuff
 @Mod.EventBusSubscriber(modid = AePrimus.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class ModEventBusEvents {
     @SubscribeEvent

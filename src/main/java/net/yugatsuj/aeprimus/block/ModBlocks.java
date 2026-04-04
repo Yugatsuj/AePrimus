@@ -1,9 +1,15 @@
 package net.yugatsuj.aeprimus.block;
 
+import com.teamresourceful.resourcefullib.common.registry.RegistryEntry;
+import com.teamresourceful.resourcefullib.common.registry.ResourcefulRegistries;
+import com.teamresourceful.resourcefullib.common.registry.ResourcefulRegistry;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
+import net.minecraft.world.level.material.MapColor;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -11,12 +17,16 @@ import net.minecraftforge.registries.RegistryObject;
 import net.yugatsuj.aeprimus.AePrimus;
 import net.yugatsuj.aeprimus.item.ModItems;
 
+import earth.terrarium.adastra.common.blocks.*;
+import earth.terrarium.adastra.common.blocks.machines.*;
+import net.minecraft.world.level.block.*;
 import java.util.function.Supplier;
+
 
 public class ModBlocks {
     public static final DeferredRegister<Block> BLOCKS =
             DeferredRegister.create(ForgeRegistries.BLOCKS, AePrimus.MOD_ID);
-
+    
     public static final RegistryObject<Block> PYROSIAN_SOOT = registerBlock("pyrosian_soot",
             () -> new Block(BlockBehaviour.Properties.copy(Blocks.SAND).sound(SoundType.SAND)));
     public static final RegistryObject<Block> PACKED_PYROSIAN_SOOT = registerBlock("packed_pyrosian_soot",
