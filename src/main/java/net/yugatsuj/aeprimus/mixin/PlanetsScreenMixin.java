@@ -1,4 +1,4 @@
-package net.yugatsuj.aeprimus.mixins;
+package net.yugatsuj.aeprimus.mixin;
 
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.BufferBuilder;
@@ -55,5 +55,20 @@ public class PlanetsScreenMixin extends Screen {
         graphics.pose().translate(24, 0, 0);
         graphics.blit(DimensionRenderingUtils.CRABDOZER_BALL, 0, 0, 0, 0, 12, 12, 12, 12);
         graphics.pose().popPose();
+
+        if (!PlanetConstants.EDGE_UNIVERSE.equals(this.selectedSolarSystem)) return;
+        RenderSystem.setShader(GameRenderer::getPositionColorShader);
+        bufferBuilder.begin(VertexFormat.Mode.DEBUG_LINES, DefaultVertexFormat.POSITION_COLOR);
+        PlanetsScreen.drawCircle(bufferBuilder, this.width / 2f, this.height / 2f, 32, 75, 0xffFF6600);
+        tessellator.end();
+
+        graphics.blit(DimensionRenderingUtils.VULPIN, this.width / 2 - 8, this.height / 2 - 8, 0, 0, 16, 16, 16, 16);
+        graphics.pose().pushPose();
+        graphics.pose().translate(width / 2f, height / 2f, 0);
+        graphics.pose().mulPose(Axis.ZP.rotationDegrees(rotation));
+        graphics.pose().translate(24, 0, 0);
+        graphics.blit(DimensionRenderingUtils.CRABDOZER_BALL, 0, 0, 0, 0, 12, 12, 12, 12);
+        graphics.pose().popPose();
     }
+
 }

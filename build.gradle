@@ -3,7 +3,6 @@ plugins {
     id 'java-library'
     id 'maven-publish'
     id 'net.neoforged.moddev.legacyforge' version '2.0.91'
-
 }
 
 
@@ -121,6 +120,7 @@ repositories {
     maven { url = "https://maven.createmod.net" } // Create, Ponder, Flywheel
     maven { url = "https://maven.ithundxr.dev/mirror" } // Registrate
     maven { url = "https://raw.githubusercontent.com/Fuzss/modresources/main/maven/" } // ForgeConfigAPIPort
+    maven { url = "https://repo.spongepowered.org/repository/maven-public/" }
     maven { url = "https://maven.shedaniel.me"}
     maven {
         // location of the maven that hosts JEI files before January 2023
@@ -139,7 +139,6 @@ repositories {
     }
 }
 dependencies {
-
     modCompileOnly "earth.terrarium.adastra:ad_astra-forge-1.20.1:1.15.20"
     modRuntimeOnly "earth.terrarium.adastra:ad_astra-forge-1.20.1:1.15.20"
     modImplementation("com.simibubi.create:create-${minecraft_version}:${create_version}:slim") { transitive = false }

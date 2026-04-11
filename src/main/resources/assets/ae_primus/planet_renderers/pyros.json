@@ -4,8 +4,6 @@
   "custom_weather": false,
   "dimension": "ae_primus:pyros",
   "has_fog": true,
-  "fog_color": 4456448,
-  "sky_color": 1052672,
   "has_thick_fog": false,
   "render_in_rain": true,
   "sky_renderables": [

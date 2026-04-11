@@ -1,11 +1,13 @@
 {
   "required": true,
-  "minVersion": "0.8",
-  "package": "net.yugatsuj.aeprimus.mixins",
+  "refmap": "ae_primus.refmap.json",
+  "package": "net.yugatsuj.aeprimus.mixin",
   "compatibilityLevel": "JAVA_17",
-  "mixins": [],
-  "client": [
+  "minVersion": "0.8",
+  "mixins": [
     "PlanetsScreenMixin"
   ],
-  "injectionPoints": []
+  "injectors": {
+    "defaultRequire": 1
+  }
 }

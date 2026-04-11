@@ -1,0 +1,32 @@
+{
+  "parent": "ae_primus:primus",
+  "criteria": {
+    "entered_vulpin": {
+      "conditions": {
+        "to": "ae_primus:vulpin"
+      },
+      "trigger": "minecraft:changed_dimension"
+    }
+  },
+  "display": {
+    "background": "ae_primus:textures/block/pyros/packed_pyrosian_soot.png",
+    "description": {
+      "translate": "advancements.ae_primus.vulpin.description"
+    },
+    "icon": {
+      "item": "ae_primus:vulpinite_stone"
+    },
+    "title": {
+      "translate": "advancements.ae_primus.vulpin.title"
+    }
+  },
+  "requirements": [
+    [
+      "entered_vulpin"
+    ]
+  ],
+  "rewards": {
+    "experience": 100
+  },
+  "sends_telemetry_event": true
+}

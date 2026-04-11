@@ -30,6 +30,10 @@
     "ae_primus:pyrosian_deepslate_iron_ore",
     "ae_primus:pyrosian_deepslate_gold_ore",
     "ae_primus:pyrosian_deepslate_diamond_ore",
-    "ae_primus:pyrosian_deepslate_frigyd_ore"
+    "ae_primus:pyrosian_deepslate_frigyd_ore",
+    "ae_primus:vulpinite_stone",
+    "ae_primus:vulpinite_cobblestone",
+    "ae_primus:vulpinite_deepslate",
+    "ae_primus:vulpinite_deepslate_cobblestone"
   ]
 }

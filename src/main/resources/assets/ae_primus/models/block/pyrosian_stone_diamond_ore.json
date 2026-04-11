@@ -1,6 +1,6 @@
 {
  "parent": "minecraft:block/cube_all",
   "textures": {
-    "all": "ae_primus:block/pyrosian_stone_diamond_ore"
+    "all": "ae_primus:block/pyros/pyrosian_stone_diamond_ore"
   }
 }

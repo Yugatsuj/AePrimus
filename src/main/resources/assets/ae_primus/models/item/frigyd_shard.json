@@ -1,7 +1,7 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "ae_primus:item/frigyd_shard"
+    "layer0": "ae_primus:item/pyros/frigyd_shard"
   }
 
 }

@@ -6,7 +6,7 @@
   },
   "display": {
     "announce_to_chat": false,
-      "background": "ae_primus:textures/block/packed_pyrosian_soot.png",
+      "background": "ae_primus:textures/block/pyros/packed_pyrosian_soot.png",
     "description": {
       "translate": "advancements.ae_primus.primus.description"
     },

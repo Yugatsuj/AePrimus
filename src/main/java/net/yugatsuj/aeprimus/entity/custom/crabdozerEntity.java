@@ -28,6 +28,7 @@ import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.scores.Team;
+import net.minecraftforge.registries.ForgeRegistries;
 import net.yugatsuj.aeprimus.AePrimus;
 import net.yugatsuj.aeprimus.entity.ModEntities;
 import net.yugatsuj.aeprimus.entity.ai.CrabdozerAttackGoal;
@@ -161,7 +162,7 @@ public class crabdozerEntity extends TamableAnimal {
                 .add(Attributes.MOVEMENT_SPEED, 0.4D)
                 .add(Attributes.ARMOR_TOUGHNESS, 0.5f)
                 .add(Attributes.ATTACK_KNOCKBACK, 0.5f)
-                .add(Attributes.ATTACK_DAMAGE, 8f);
+                .add(Attributes.ATTACK_DAMAGE, 10f);
     }
 
     @Nullable
@@ -272,7 +273,20 @@ public class crabdozerEntity extends TamableAnimal {
         }
         return super.mobInteract(player, hand);
     }
-    // Sounds that i made from minecraft mobs
+    // Double times dmg to a specific entities that should technically work on paper
+    @Override
+    public boolean doHurtTarget(Entity target) {
+        boolean isPyronite = target instanceof pyronite_v1Entity;
+        boolean isAlienEvoPyronite = target instanceof Player && target.getTags().contains("Pyronite");
+
+        if (isPyronite || isAlienEvoPyronite) {
+            float baseDamage = (float) this.getAttributeValue(Attributes.ATTACK_DAMAGE);
+            return target.hurt(this.level().damageSources().mobAttack(this), baseDamage * 32);
+        }
+        return super.doHurtTarget(target);
+    }
+
+    // Sounds that i took from minecraft mobs
     @Nullable
     @Override
     protected SoundEvent getAmbientSound() {

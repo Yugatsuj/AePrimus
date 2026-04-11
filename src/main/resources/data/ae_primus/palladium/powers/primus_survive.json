@@ -1,0 +1,64 @@
+{
+  "name": "PrimusSurvive",
+  "icon": "minecraft:blaze_rod",
+  "background": "alienevo:textures/gui/power_screen/power_screen.png",
+    "primary_color": "#d117a9",
+    "allow_bar_shrinking": false,
+    "persistent_data": true,
+    "secondary_color": "#332e27",
+    "ability_bar_texture": "alienevo:textures/gui/ability_bar/interface.png",
+  "abilities": {
+	"pyros_survive": {
+    	"type": "palladium:damage_immunity",
+    	"icon": "minecraft:potion",
+    	"title": "null",
+    	"bar_color": "light_gray",
+    	"hidden": true,
+    	"hidden_in_bar": true,
+    	"list_index": -1,
+    	"gui_position": "null",
+    	"description": "null",
+    	"damage_sources": [
+        	"alienevo:evoastra"
+    	],
+		"conditions": {
+			"unlocking": [
+    				{
+    						"type": "palladium:has_power",
+    						"power": "alienevo_aliens:pyronite"
+					},
+					{
+    						"type": "palladium:dimension",
+    						"dimension": "ae_primus:pyros"
+					}	
+			]
+		}
+	},
+	"vulpin_survive": {
+    	"type": "palladium:damage_immunity",
+    	"icon": "minecraft:potion",
+    	"title": "null",
+    	"bar_color": "light_gray",
+    	"hidden": true,
+    	"hidden_in_bar": true,
+    	"list_index": -1,
+    	"gui_position": "null",
+    	"description": "null",
+    	"damage_sources": [
+        	"alienevo:evoastra"
+    	],
+		"conditions": {
+			"unlocking": [
+    				{
+    						"type": "palladium:has_power",
+    						"power": "alienevo_aliens:vulpimancer"
+					},
+					{
+    						"type": "palladium:dimension",
+    						"dimension": "ae_primus:vulpin"
+					}	
+			]
+		}
+	}
+  }
+}

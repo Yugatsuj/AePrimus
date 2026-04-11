@@ -1,0 +1,36 @@
+{
+  "type": "ae_primus:vulpin",
+  "generator": {
+    "type": "minecraft:noise",
+    "settings": "ae_primus:vulpin",
+    "biome_source": {
+      "type": "minecraft:multi_noise",
+      "biomes": [
+        {
+          "biome": "ae_primus:vulpin_forest",
+          "parameters": {
+            "continentalness": 0,
+            "depth": 0,
+            "erosion": 1,
+            "humidity": 0,
+            "offset": 0,
+            "temperature": 0,
+            "weirdness": 0
+          }
+        },
+        {
+          "biome": "minecraft:ocean",
+          "parameters": {
+            "continentalness": 0,
+            "depth": 0,
+            "erosion": 1,
+            "humidity": 0,
+            "offset": 0,
+            "temperature": 0,
+            "weirdness": 0
+          }
+        }
+      ]
+    }
+  }
+}

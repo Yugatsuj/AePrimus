@@ -25,7 +25,6 @@ import net.yugatsuj.aeprimus.entity.ModEntities;
 import net.yugatsuj.aeprimus.entity.client.*;
 import net.yugatsuj.aeprimus.item.ModCreativeModTabs;
 import net.yugatsuj.aeprimus.item.ModItems;
-import net.yugatsuj.aeprimus.screens.utils.DimensionRenderingUtils;
 import org.slf4j.Logger;
 
 @Mod(AePrimus.MOD_ID)

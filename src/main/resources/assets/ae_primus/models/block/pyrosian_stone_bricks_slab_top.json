@@ -1,8 +1,8 @@
 {
   "parent": "minecraft:block/slab_top",
   "textures": {
-    "bottom": "ae_primus:block/pyrosian_stone_bricks",
-    "top": "ae_primus:block/pyrosian_stone_bricks",
-    "side": "ae_primus:block/pyrosian_stone_bricks"
+    "bottom": "ae_primus:block/pyros/pyrosian_stone_bricks",
+    "top": "ae_primus:block/pyros/pyrosian_stone_bricks",
+    "side": "ae_primus:block/pyros/pyrosian_stone_bricks"
   }
 }

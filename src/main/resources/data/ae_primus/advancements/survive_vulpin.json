@@ -1,0 +1,55 @@
+{
+  "parent": "ae_primus:vulpin",
+  "criteria": {
+    "survive_three_days": {
+      "trigger": "minecraft:tick",
+      "conditions": {
+        "player": [
+          {
+            "condition": "minecraft:value_check",
+            "value": {
+              "type": "minecraft:score",
+              "target": {
+                "type": "minecraft:fixed",
+                "name": "#survive_time"
+              },
+              "score": "survive_time"
+            },
+            "range": {
+              "min": 72000
+            }
+          },
+          {
+            "condition": "minecraft:location_check",
+            "predicate": {
+              "dimension": "ae_primus:vulpin"
+            }
+          }
+        ]
+      }
+    }
+  },
+  "display": {
+    "icon": {
+      "item": "ae_primus:pyrosian_stone"
+    },
+    "title": {
+      "translate": "advancements.ae_primus.survive_vulpin.title"
+    },
+    "description": {
+      "translate": "advancements.ae_primus.survive_vulpin.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "requirements": [
+    [
+      "survive_three_days"
+    ]
+  ],
+  "rewards": {
+    "experience": 150
+  }
+}

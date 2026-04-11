@@ -1,0 +1,9 @@
+{
+  "dimension": "ae_primus:vulpin_orbit",
+  "gravity": 0.0,
+  "oxygen": false,
+  "solar_power": 0,
+  "solar_system": "ae_primus:edgeuniverse",
+  "temperature": -270,
+  "tier": 4
+}

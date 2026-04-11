@@ -1,0 +1,2 @@
+execute as @a[palladium.power=alienevo:prototype_omnitrix] run superpower add ae_primus:primus_survive @s
+execute as @a[palladium.power=aeo:omniverse_omnitrix] run superpower add ae_primus:primus_survive @s

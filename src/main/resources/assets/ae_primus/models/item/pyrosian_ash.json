@@ -1,7 +1,7 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "ae_primus:item/pyrosian_ash"
+    "layer0": "ae_primus:item/pyros/pyrosian_ash"
   }
 
 }

@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:block/template_wall_post",
   "textures": {
-    "wall": "ae_primus:block/pyrosian_stone_bricks"
+    "wall": "ae_primus:block/pyros/pyrosian_stone_bricks"
   }
 }
