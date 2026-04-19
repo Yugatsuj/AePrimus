@@ -1,13 +1,13 @@
 {
   "structures": [
     {
-      "structure": "ae_primus:vulpin_mushrooms",
+      "structure": "ae_primus:vulpin_flowers",
       "weight": 1
     }
   ],
   "placement": {
-    "salt": 987654321,
-    "spacing": 11,
+    "salt": 158293674,
+    "spacing": 10,
     "separation": 0,
     "type": "minecraft:random_spread",
     "spread_type": "triangular"

@@ -51,7 +51,7 @@
     },
     "ae_primus:crabdozer": {
       "energy_budget": 0.0005,
-      "charge": 1.0
+      "charge": 2.0
     }
   }
 }

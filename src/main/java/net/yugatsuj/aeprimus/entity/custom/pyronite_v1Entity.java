@@ -118,7 +118,7 @@ public class pyronite_v1Entity extends Villager {
     // Their attributes
     public static AttributeSupplier.Builder createAttributes() {
         return Animal.createLivingAttributes()
-                .add(Attributes.MAX_HEALTH, 40D)
+                .add(Attributes.MAX_HEALTH, 50D)
                 .add(Attributes.FOLLOW_RANGE, 12D)
                 .add(Attributes.MOVEMENT_SPEED, 0.4D)
                 .add(Attributes.ARMOR_TOUGHNESS, 0.5f)

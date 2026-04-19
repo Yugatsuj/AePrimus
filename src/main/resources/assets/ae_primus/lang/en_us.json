@@ -63,8 +63,10 @@
   "block.ae_primus.pyrosian_deepslate_bricks_wall": "Pyrosian Deepslate Brick Wall",
 
   "block.ae_primus.vulpinite_stone": "Vulpinite Stone",
+  "block.ae_primus.vulpinite_stone_titanium": "Vulpinite Titanium Ore",
   "block.ae_primus.vulpinite_cobblestone": "Vulpinite Cobblestone",
   "block.ae_primus.vulpinite_deepslate": "Vulpinite Deepslate",
+  "block.ae_primus.vulpinite_deepslate_titanium": "Vulpinite Deepslate Titanium Ore",
   "block.ae_primus.vulpinite_deepslate_cobblestone": "Cobbled Vulpinite Deepslate",
 
   "entity.ae_primus.crabdozer": "Crabdozer",

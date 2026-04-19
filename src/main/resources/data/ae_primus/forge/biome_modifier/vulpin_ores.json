@@ -1,0 +1,9 @@
+{
+  "type": "forge:add_features",
+  "biomes": "ae_primus:vulpin_forest",
+  "features": [
+    "ae_primus:vulpinite_stone_titanium",
+    "ae_primus:vulpinite_deepslate_titanium"
+  ],
+  "step": "underground_ores"
+}

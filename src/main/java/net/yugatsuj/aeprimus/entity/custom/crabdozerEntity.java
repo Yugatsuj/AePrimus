@@ -158,11 +158,13 @@ public class crabdozerEntity extends TamableAnimal {
     public static AttributeSupplier.Builder createAttributes() {
         return Animal.createLivingAttributes()
                 .add(Attributes.MAX_HEALTH, 150D)
-                .add(Attributes.FOLLOW_RANGE, 12D)
+                .add(Attributes.FOLLOW_RANGE, 20D)
                 .add(Attributes.MOVEMENT_SPEED, 0.4D)
-                .add(Attributes.ARMOR_TOUGHNESS, 0.5f)
-                .add(Attributes.ATTACK_KNOCKBACK, 0.5f)
-                .add(Attributes.ATTACK_DAMAGE, 10f);
+                .add(Attributes.ARMOR_TOUGHNESS, 1f)
+                .add(Attributes.ARMOR, 50f)
+                .add(Attributes.ATTACK_KNOCKBACK, 1f)
+                .add(Attributes.ATTACK_DAMAGE, 12f)
+                .add(Attributes.KNOCKBACK_RESISTANCE, 1.0D);
     }
 
     @Nullable
@@ -258,8 +260,8 @@ public class crabdozerEntity extends TamableAnimal {
             if (!this.level().isClientSide) {
                 if (this.random.nextInt(20) == 0) {
                     this.tame(player);
-                    this.getAttribute(Attributes.MAX_HEALTH).setBaseValue(80.0F);
-                    this.setHealth(80.0F);
+                    this.getAttribute(Attributes.MAX_HEALTH).setBaseValue(100.0F);
+                    this.setHealth(100.0F);
                     this.level().broadcastEntityEvent(this, (byte)7);
                 } else {
                     this.level().broadcastEntityEvent(this, (byte)6);
@@ -281,7 +283,7 @@ public class crabdozerEntity extends TamableAnimal {
 
         if (isPyronite || isAlienEvoPyronite) {
             float baseDamage = (float) this.getAttributeValue(Attributes.ATTACK_DAMAGE);
-            return target.hurt(this.level().damageSources().mobAttack(this), baseDamage * 32);
+            return target.hurt(this.level().damageSources().mobAttack(this), baseDamage * 3);
         }
         return super.doHurtTarget(target);
     }

@@ -26,6 +26,7 @@ import net.yugatsuj.aeprimus.common.constants.PlanetConstants;
 import javax.annotation.Nullable;
 import java.awt.*;
 // Planets screen mixin that is inspired by a post on ad astra github
+
 @Mixin(PlanetsScreen.class)
 public class PlanetsScreenMixin extends Screen {
 
@@ -38,37 +39,37 @@ public class PlanetsScreenMixin extends Screen {
 
     @Inject(method = "renderBackground", at = @At("TAIL"))
     private void onRenderBackground(GuiGraphics graphics, CallbackInfo ci) {
-        if (!PlanetConstants.PYROS_SYSTEM.equals(this.selectedSolarSystem)) return;
-
+        float rotation = Util.getMillis() / 100f;
         Tesselator tessellator = Tesselator.getInstance();
         BufferBuilder bufferBuilder = tessellator.getBuilder();
-        RenderSystem.setShader(GameRenderer::getPositionColorShader);
-        bufferBuilder.begin(VertexFormat.Mode.DEBUG_LINES, DefaultVertexFormat.POSITION_COLOR);
-        PlanetsScreen.drawCircle(bufferBuilder, this.width / 2f, this.height / 2f, 32, 75, 0xffFF6600);
-        tessellator.end();
 
-        graphics.blit(DimensionRenderingUtils.PYROS, this.width / 2 - 8, this.height / 2 - 8, 0, 0, 16, 16, 16, 16);
-        float rotation = Util.getMillis() / 100f;
-        graphics.pose().pushPose();
-        graphics.pose().translate(width / 2f, height / 2f, 0);
-        graphics.pose().mulPose(Axis.ZP.rotationDegrees(rotation));
-        graphics.pose().translate(24, 0, 0);
-        graphics.blit(DimensionRenderingUtils.CRABDOZER_BALL, 0, 0, 0, 0, 12, 12, 12, 12);
-        graphics.pose().popPose();
+        if (PlanetConstants.PYROS_SYSTEM.equals(this.selectedSolarSystem)) {
+            RenderSystem.setShader(GameRenderer::getPositionColorShader);
+            bufferBuilder.begin(VertexFormat.Mode.DEBUG_LINES, DefaultVertexFormat.POSITION_COLOR);
+            PlanetsScreen.drawCircle(bufferBuilder, this.width / 2f, this.height / 2f, 32, 75, 0xffFF6600);
+            tessellator.end();
 
-        if (!PlanetConstants.EDGE_UNIVERSE.equals(this.selectedSolarSystem)) return;
-        RenderSystem.setShader(GameRenderer::getPositionColorShader);
-        bufferBuilder.begin(VertexFormat.Mode.DEBUG_LINES, DefaultVertexFormat.POSITION_COLOR);
-        PlanetsScreen.drawCircle(bufferBuilder, this.width / 2f, this.height / 2f, 32, 75, 0xffFF6600);
-        tessellator.end();
+            graphics.blit(DimensionRenderingUtils.PYROS, this.width / 2 - 8, this.height / 2 - 8, 0, 0, 16, 16, 16, 16);
+            graphics.pose().pushPose();
+            graphics.pose().translate(width / 2f, height / 2f, 0);
+            graphics.pose().mulPose(Axis.ZP.rotationDegrees(rotation));
+            graphics.pose().translate(24, 0, 0);
+            graphics.blit(DimensionRenderingUtils.CRABDOZER_BALL, 0, 0, 0, 0, 12, 12, 12, 12);
+            graphics.pose().popPose();
+        }
 
-        graphics.blit(DimensionRenderingUtils.VULPIN, this.width / 2 - 8, this.height / 2 - 8, 0, 0, 16, 16, 16, 16);
-        graphics.pose().pushPose();
-        graphics.pose().translate(width / 2f, height / 2f, 0);
-        graphics.pose().mulPose(Axis.ZP.rotationDegrees(rotation));
-        graphics.pose().translate(24, 0, 0);
-        graphics.blit(DimensionRenderingUtils.CRABDOZER_BALL, 0, 0, 0, 0, 12, 12, 12, 12);
-        graphics.pose().popPose();
+        if (PlanetConstants.EDGE_UNIVERSE.equals(this.selectedSolarSystem)) {
+            RenderSystem.setShader(GameRenderer::getPositionColorShader);
+            bufferBuilder.begin(VertexFormat.Mode.DEBUG_LINES, DefaultVertexFormat.POSITION_COLOR);
+            PlanetsScreen.drawCircle(bufferBuilder, this.width / 2f, this.height / 2f, 35, 75, 0xFF111f0c);
+            tessellator.end();
+
+            graphics.blit(DimensionRenderingUtils.VULPIN, this.width / 2 - 8, this.height / 2 - 8, 0, 0, 16, 16, 16, 16);
+            graphics.pose().pushPose();
+            graphics.pose().translate(width / 2f, height / 2f, 0);
+            graphics.pose().mulPose(Axis.ZP.rotationDegrees(rotation));
+            graphics.pose().translate(24, 0, 0);
+            graphics.pose().popPose();
+        }
     }
-
 }

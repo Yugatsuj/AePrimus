@@ -1,9 +1,6 @@
 package net.yugatsuj.aeprimus.block;
 
-import com.teamresourceful.resourcefullib.common.registry.RegistryEntry;
-import com.teamresourceful.resourcefullib.common.registry.ResourcefulRegistries;
-import com.teamresourceful.resourcefullib.common.registry.ResourcefulRegistry;
-import net.minecraft.core.registries.BuiltInRegistries;
+
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.*;
@@ -17,8 +14,6 @@ import net.minecraftforge.registries.RegistryObject;
 import net.yugatsuj.aeprimus.AePrimus;
 import net.yugatsuj.aeprimus.item.ModItems;
 
-import earth.terrarium.adastra.common.blocks.*;
-import earth.terrarium.adastra.common.blocks.machines.*;
 import net.minecraft.world.level.block.*;
 import java.util.function.Supplier;
 
@@ -59,8 +54,6 @@ public class ModBlocks {
             () -> new StairBlock(() -> PYROSIAN_DEEPSLATE.get().defaultBlockState(),
                     BlockBehaviour.Properties.copy(Blocks.DEEPSLATE_BRICK_STAIRS).sound(SoundType.DEEPSLATE)));
 
-    public static final RegistryObject<Block> VULPINITE_DEEPSLATE = registerBlock("vulpinite_deepslate",
-            () -> new Block(BlockBehaviour.Properties.copy(Blocks.DEEPSLATE).sound(SoundType.DEEPSLATE)));
 
     public static final RegistryObject<Block> PYROSIAN_DEEPSLATE_COBBLESTONE = registerBlock("pyrosian_deepslate_cobblestone",
             () -> new Block(BlockBehaviour.Properties.copy(Blocks.COBBLED_DEEPSLATE).sound(SoundType.DEEPSLATE)));
@@ -72,8 +65,7 @@ public class ModBlocks {
     public static final RegistryObject<WallBlock> PYROSIAN_DEEPSLATE_COBBLESTONE_WALL = registerBlock("pyrosian_deepslate_cobblestone_wall",
             () -> new WallBlock(BlockBehaviour.Properties.copy(Blocks.COBBLED_DEEPSLATE_WALL).sound(SoundType.DEEPSLATE)));
 
-    public static final RegistryObject<Block> VULPINITE_DEEPSLATE_COBBLESTONE = registerBlock("vulpinite_deepslate_cobblestone",
-            () -> new Block(BlockBehaviour.Properties.copy(Blocks.COBBLED_DEEPSLATE).sound(SoundType.DEEPSLATE)));
+
 
     public static final RegistryObject<Block> PYROSIAN_DEEPSLATE_IRON_ORE = registerBlock("pyrosian_deepslate_iron_ore",
             () -> new Block(BlockBehaviour.Properties.copy(Blocks.DEEPSLATE_IRON_ORE).sound(SoundType.DEEPSLATE)));
@@ -117,10 +109,17 @@ public class ModBlocks {
 
     public static final RegistryObject<Block> VULPINITE_STONE = registerBlock("vulpinite_stone",
             () -> new Block(BlockBehaviour.Properties.copy(Blocks.STONE).sound(SoundType.STONE)));
-
     public static final RegistryObject<Block> VULPINITE_COBBLESTONE = registerBlock("vulpinite_cobblestone",
             () -> new Block(BlockBehaviour.Properties.copy(Blocks.COBBLESTONE).sound(SoundType.STONE)));
+    public static final RegistryObject<Block> VULPINITE_STONE_TITANIUM = registerBlock("vulpinite_stone_titanium",
+            () -> new Block(BlockBehaviour.Properties.copy(Blocks.IRON_ORE).sound(SoundType.STONE)));
 
+    public static final RegistryObject<Block> VULPINITE_DEEPSLATE = registerBlock("vulpinite_deepslate",
+            () -> new Block(BlockBehaviour.Properties.copy(Blocks.DEEPSLATE).sound(SoundType.DEEPSLATE)));
+    public static final RegistryObject<Block> VULPINITE_DEEPSLATE_COBBLESTONE = registerBlock("vulpinite_deepslate_cobblestone",
+            () -> new Block(BlockBehaviour.Properties.copy(Blocks.COBBLED_DEEPSLATE).sound(SoundType.DEEPSLATE)));
+    public static final RegistryObject<Block> VULPINITE_DEEPSLATE_TITANIUM = registerBlock("vulpinite_deepslate_titanium",
+            () -> new Block(BlockBehaviour.Properties.copy(Blocks.DEEPSLATE_IRON_ORE).sound(SoundType.DEEPSLATE)));
 
     private static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> block){
         RegistryObject<T> toReturn = BLOCKS.register(name, block);

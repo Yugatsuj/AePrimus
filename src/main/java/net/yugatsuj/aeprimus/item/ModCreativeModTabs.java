@@ -63,8 +63,10 @@ public class ModCreativeModTabs {
                         output.accept(ModBlocks.PYROSIAN_DEEPSLATE_FRIGYD_ORE.get());
 
                         output.accept(ModBlocks.VULPINITE_STONE.get());
+                        output.accept(ModBlocks.VULPINITE_STONE_TITANIUM.get());
                         output.accept(ModBlocks.VULPINITE_COBBLESTONE.get());
                         output.accept(ModBlocks.VULPINITE_DEEPSLATE.get());
+                        output.accept(ModBlocks.VULPINITE_DEEPSLATE_TITANIUM.get());
                         output.accept(ModBlocks.VULPINITE_DEEPSLATE_COBBLESTONE.get());
 
 

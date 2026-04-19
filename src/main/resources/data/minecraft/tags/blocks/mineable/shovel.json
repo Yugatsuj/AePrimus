@@ -1,6 +1,6 @@
 {
   "values": [
-    "packed_pyrosian_soot",
-    "pyrosian_soot"
+    "ae_primus:packed_pyrosian_soot",
+    "ae_primus:pyrosian_soot"
   ]
 }
